@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainPageActivity">
+
+    <Button
+        android:id="@+id/main_page_logout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_page_logout_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="30sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:layout_marginTop="@android:dimen/app_icon_size"
+            android:gravity="center"
+            android:text="@string/main_page_hello_message"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:gravity="center"
+            android:text="@string/main_page_need_message"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/main_page_my_information_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@android:dimen/app_icon_size"
+            android:text="@string/main_page_my_information_button"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/main_page_new_claim_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@android:dimen/app_icon_size"
+            android:text="@string/main_page_new_claim_button"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/main_page_my_claims_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@android:dimen/app_icon_size"
+            android:text="@string/main_page_my_claims_button"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

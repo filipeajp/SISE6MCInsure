@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">InSure</string>
+
+    <string name="login_slogan">InSure keeps going\nso your travels do not stop!</string>
+    <string name="login_user_name">Username</string>
+    <string name="login_user_password">Password</string>
+    <string name="login_button">Login</string>
+
+    <string name="main_page_logout_button">Logout</string>
+    <string name="main_page_hello_message">Hello Sofia!</string>
+    <string name="main_page_need_message">What do you need?</string>
+    <string name="main_page_my_information_button">My Information</string>
+    <string name="main_page_new_claim_button">New Claim</string>
+    <string name="main_page_my_claims_button">My Claims</string>
+
+</resources>
