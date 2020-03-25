@@ -44,7 +44,8 @@
             android:layout_marginBottom="10dp"
             android:ems="10"
             android:hint="@string/new_claim_claim_title"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/new_claim_plate_number"
@@ -53,7 +54,8 @@
             android:layout_marginBottom="10dp"
             android:ems="10"
             android:hint="@string/new_claim_plate_number"
-            android:inputType="textPersonName" />
+            android:inputType="number"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/new_claim_occurrence_date"
@@ -62,7 +64,8 @@
             android:layout_marginBottom="10dp"
             android:ems="10"
             android:hint="@string/new_claim_occurrence_date"
-            android:inputType="textPersonName" />
+            android:inputType="date|text"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/new_claim_description"
@@ -72,26 +75,28 @@
             android:ems="10"
             android:gravity="start|top"
             android:hint="@string/new_claim_description"
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            android:autofillHints="" />
 
         <LinearLayout
+            style="buttonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/new_claim_btn_cancel"
+                style="buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:text="@string/new_claim_btn_cancel" />
 
             <Button
                 android:id="@+id/new_claim_btn_submit"
+                style="buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:text="@string/new_claim_btn_submit" />
         </LinearLayout>
