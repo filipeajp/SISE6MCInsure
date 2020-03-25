@@ -13,4 +13,31 @@
     <string name="main_page_new_claim_button">New Claim</string>
     <string name="main_page_my_claims_button">My Claims</string>
 
+    <string name="my_information_button">My Information</string>
+    <string name="form_label_name">Name:</string>
+    <string name="form_label_birth">Date of birth:</string>
+    <string name="form_label_address">Address:</string>
+    <string name="form_label_nif">Fiscal Number:</string>
+    <string name="form_label_policy_nr">Insurance Policy:</string>
+    <string name="my_information_back_button">Back</string>
+    <string name="my_information_name">Sofia Silva</string>
+    <string name="my_information_birth">10/11/1995</string>
+    <string name="my_information_address">R. Alves Redol nº 133</string>
+    <string name="my_information_nif">268034299</string>
+    <string name="my_information_policy_nr">12332</string>
+
+    <string name="new_claim_activity_title">New Claim</string>
+    <string name="new_claim_action_message">Submit here your claim</string>
+    <string name="new_claim_claim_title">Title</string>
+    <string name="new_claim_plate_number">Plate Number</string>
+    <string name="new_claim_occurrence_date">Occurrence Date</string>
+    <string name="new_claim_description">Description</string>
+    <string name="new_claim_btn_submit">Submit</string>
+    <string name="new_claim_btn_cancel">Cancel</string>
+
+    <string name="claim_submitted_confirmation">Submission completed!</string>
+    <string name="claim_submitted_more_info">You can check all information on "My Claims"</string>
+    <string name="claim_submitted_btn_menu">Menu</string>
+    <string name="claim_submitted_btn_my_claims">My Claims</string>
+
 </resources>
