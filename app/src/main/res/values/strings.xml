@@ -13,4 +13,17 @@
     <string name="main_page_new_claim_button">New Claim</string>
     <string name="main_page_my_claims_button">My Claims</string>
 
+    <string name="new_claim_activity_title">New Claim</string>
+    <string name="new_claim_action_message">Submit here your claim</string>
+    <string name="new_claim_claim_title">Title</string>
+    <string name="new_claim_plate_number">Plate Number</string>
+    <string name="new_claim_occurrence_date">Occurrence Date</string>
+    <string name="new_claim_description">Description</string>
+    <string name="new_claim_btn_submit">Submit</string>
+    <string name="new_claim_btn_cancel">Cancel</string>
+
+    <string name="claim_submitted_confirmation">Submission completed!</string>
+    <string name="claim_submitted_more_info">You can check all information on "My Claims"</string>
+    <string name="claim_submitted_btn_menu">Menu</string>
+    <string name="claim_submitted_btn_my_claims">My Claims</string>
 </resources>
