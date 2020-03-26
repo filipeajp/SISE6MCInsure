@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainPageActivity extends AppCompatActivity {
 
     private Button buttonLogout;
+
+    private TextView textViewHelloMessage;
 
     private Button buttonMyInformation;
     private Button buttonNewClaim;
@@ -21,6 +24,12 @@ public class MainPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
 
         buttonLogout = findViewById(R.id.main_page_logout_button);
+
+        // change hello message
+        textViewHelloMessage = findViewById(R.id.main_page_hello_message);
+        Bundle extras = getIntent().getExtras();
+        String username = extras.getString("USERNAME");
+        textViewHelloMessage.setText("Hello " + username + " !");
 
         buttonMyInformation = findViewById(R.id.main_page_my_information_button);
         buttonNewClaim = findViewById(R.id.main_page_new_claim_button);
