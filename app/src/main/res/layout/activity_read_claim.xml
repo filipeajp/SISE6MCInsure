@@ -164,10 +164,11 @@
             android:id="@+id/read_claim_back_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="end"
             android:layout_marginLeft="150dp"
             android:text="@string/read_claim_back_button"
-            tools:visibility="visible" />
+            tools:visibility="visible"
+            android:layout_marginStart="150dp" />
 
     </LinearLayout>
 
