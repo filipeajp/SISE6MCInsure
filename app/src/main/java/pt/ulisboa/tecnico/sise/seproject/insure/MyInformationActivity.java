@@ -24,6 +24,7 @@ public class MyInformationActivity extends AppCompatActivity {
                 Log.d(LOG_TAG, "My information back button is working");
                 Intent intentMyInformation = new Intent(MyInformationActivity.this, MainPageActivity.class);
                 startActivity(intentMyInformation);
+                finish();
             }
         });
     }

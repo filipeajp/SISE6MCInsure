@@ -59,6 +59,7 @@ public class MyClaimsActivity extends AppCompatActivity {
                 Log.d(LOG_TAG, "My Claims Buttons is working!");
                 Intent intentMyClaims = new Intent(MyClaimsActivity.this, MainPageActivity.class);
                 startActivity(intentMyClaims);
+                //finish();
 //                Intent intent = new Intent(MyClaimsActivity.this, NewClaimActivity.class);
 //                startActivityForResult(intent, InternalProtocol.NEW_ClAIM_REQUEST);
             }
