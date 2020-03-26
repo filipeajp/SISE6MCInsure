@@ -35,11 +35,6 @@
     <string name="new_claim_btn_submit">Submit</string>
     <string name="new_claim_btn_cancel">Cancel</string>
 
-    <string name="claim_submitted_confirmation">Submission completed!</string>
-    <string name="claim_submitted_more_info">You can check all information on "My Claims"</string>
-    <string name="claim_submitted_btn_menu">Menu</string>
-    <string name="claim_submitted_btn_my_claims">My Claims</string>
-
     <string name="my_claims">My Claims</string>
     <string name="my_claims_list">List of Claims</string>
     <string name="my_claims_list_button">Back</string>

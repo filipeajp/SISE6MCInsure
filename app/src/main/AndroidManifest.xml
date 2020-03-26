@@ -16,16 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ReadClaimActivity">
-
-        </activity>
+        <activity android:name=".ReadClaimActivity"></activity>
         <activity android:name=".MyInformationActivity"></activity>
         <activity android:name=".MainPageActivity"></activity>
         <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".NewClaimActivity">
-
-    </activity>
-        <activity android:name=".ClaimSubmittedActivity"></activity>
+        <activity android:name=".NewClaimActivity"></activity>
     </application>
 
 </manifest>
