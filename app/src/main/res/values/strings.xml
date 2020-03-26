@@ -13,7 +13,7 @@
     <string name="main_page_new_claim_button">New Claim</string>
     <string name="main_page_my_claims_button">My Claims</string>
 
-    <string name="my_information_button">My Information</string>
+    <string name="my_information_title">My Information</string>
     <string name="form_label_name">Name:</string>
     <string name="form_label_birth">Date of birth:</string>
     <string name="form_label_address">Address:</string>
