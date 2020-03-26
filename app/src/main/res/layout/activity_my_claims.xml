@@ -42,7 +42,7 @@
             android:cacheColorHint="#8E8686"
             android:scrollingCache="false"
             android:visibility="visible"
-            tools:listitem="@android:layout/simple_selectable_list_item">
+            tools:listitem="@android:layout/simple_list_item_1">
 
         </ListView>
 

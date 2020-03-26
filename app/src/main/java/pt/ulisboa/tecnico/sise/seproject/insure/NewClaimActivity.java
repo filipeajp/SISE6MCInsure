@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class NewClaimActivity extends AppCompatActivity {
+    private static final String LOG_TAG = "SISE - NewClaim";
     private Button buttonSubmit;
     private Button buttonCancel;
     private EditText editTextTitle;
@@ -23,22 +24,22 @@ public class NewClaimActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_claim);
-        Log.d(InternalProtocol.LOG, "Create claim in process...");
+        Log.d(LOG_TAG, "Create claim in process...");
 
-        buttonSubmit = findViewById(R.id.new_claim_btn_submit);
-        buttonCancel = findViewById(R.id.new_claim_btn_cancel);
-        editTextTitle = findViewById(R.id.new_claim_claim_title);
-        editTextPlateNumber = findViewById(R.id.new_claim_plate_number);
-        editTextOccurrenceDate = findViewById(R.id.new_claim_occurrence_date);
-        editTextDesc = findViewById(R.id.new_claim_description);
+        buttonSubmit = (Button) findViewById(R.id.new_claim_btn_submit);
+        buttonCancel = (Button) findViewById(R.id.new_claim_btn_cancel);
+        editTextTitle = (EditText) findViewById(R.id.new_claim_claim_title);
+        editTextPlateNumber = (EditText) findViewById(R.id.new_claim_plate_number);
+        editTextOccurrenceDate = (EditText) findViewById(R.id.new_claim_occurrence_date);
+        editTextDesc = (EditText) findViewById(R.id.new_claim_description);
 
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(InternalProtocol.LOG, editTextTitle.getText().toString());
-                Log.d(InternalProtocol.LOG, editTextPlateNumber.getText().toString());
-                Log.d(InternalProtocol.LOG, editTextOccurrenceDate.getText().toString());
-                Log.d(InternalProtocol.LOG, editTextDesc.getText().toString());
+                Log.d(LOG_TAG, editTextTitle.getText().toString());
+                Log.d(LOG_TAG, editTextPlateNumber.getText().toString());
+                Log.d(LOG_TAG, editTextOccurrenceDate.getText().toString());
+                Log.d(LOG_TAG, editTextDesc.getText().toString());
                 String claimTitle = editTextTitle.getText().toString();
                 String claimPlateNumber = editTextPlateNumber.getText().toString();
                 String claimOccurDate = editTextOccurrenceDate.getText().toString();
@@ -51,7 +52,6 @@ public class NewClaimActivity extends AppCompatActivity {
 
                 //return an intent containing the title and body of the new note
                 Intent resultIntent = new Intent();
-                startActivityForResult(resultIntent, InternalProtocol.NEW_ClAIM_REQUEST);
 
                 resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_TITLE, claimTitle);
                 resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_PLATE_NUMBER, claimPlateNumber);
@@ -72,10 +72,10 @@ public class NewClaimActivity extends AppCompatActivity {
                 // return the return code only; no intent message is required
                 setResult(Activity.RESULT_CANCELED);
 
-                Intent intent = new Intent(NewClaimActivity.this, MainPageActivity.class);
-                startActivityForResult(intent, InternalProtocol.NEW_ClAIM_REQUEST);
+                //Intent intent = new Intent(NewClaimActivity.this, MainPageActivity.class);
+                //startActivity(intent);
                 // write  a toast message
-                Toast.makeText(view.getContext(), "Claim submission cancelled", Toast.LENGTH_LONG).show();
+                Toast.makeText(view.getContext(), "Claim submission cancelled", Toast.LENGTH_SHORT).show();
                 // finish activity
                 finish();
             }

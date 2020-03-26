@@ -11,5 +11,5 @@ public class InternalProtocol {
     public static final String KEY_NEW_CLAIM_DESCRIPTION = "CLAIM_DESCRIPTION";
 
     // relevant for the read note activity
-    public static final String READ_NOTE_INDEX = "CLAIM_INDEX";
+    public static final String READ_CLAIM_INDEX = "CLAIM_INDEX";
 }

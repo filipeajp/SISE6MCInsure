@@ -1,12 +1,12 @@
 package pt.ulisboa.tecnico.sise.seproject.insure;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainPageActivity extends AppCompatActivity {
 
@@ -57,8 +57,8 @@ public class MainPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainPageActivity.this, NewClaimActivity.class);
-                startActivity(intent);
-                finish();
+                startActivityForResult(intent, InternalProtocol.NEW_ClAIM_REQUEST);
+                //finish();
             }
         });
 
@@ -67,11 +67,9 @@ public class MainPageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainPageActivity.this, MyClaimsActivity.class);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
 
     }
-
-
 }
