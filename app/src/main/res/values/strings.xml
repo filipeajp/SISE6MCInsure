@@ -40,4 +40,22 @@
     <string name="claim_submitted_btn_menu">Menu</string>
     <string name="claim_submitted_btn_my_claims">My Claims</string>
 
+    <string name="my_claims">My Claims</string>
+    <string name="my_claims_list">List of Claims</string>
+    <string name="my_claims_list_button">Back</string>
+
+    <string name="read_claim">Claim 07</string>
+    <string name="read_claim_id">Claim ID:</string>
+    <string name="read_id">07</string>
+    <string name="read_claim_issuing_date">Issuing date:</string>
+    <string name="claim_date">19/03/2020</string>
+    <string name="read_claim_title">Title:</string>
+    <string name="claim_title">Accident</string>
+    <string name="read_claim_plate_number">Plate Number:</string>
+    <string name="claim_plate_number">24-HZ-74</string>
+    <string name="read_claim_description">Description:</string>
+    <string name="claim_description">Lorem ipsum dolor...</string>
+    <string name="read_claim_status">Status:</string>
+    <string name="claim_status">Accepted</string>
+    <string name="read_claim_back_button">Back</string>
 </resources>
