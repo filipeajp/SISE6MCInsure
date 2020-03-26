@@ -47,7 +47,7 @@
         </ListView>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/my_claims_list_button"
             android:layout_width="196dp"
             android:layout_height="wrap_content"
             android:text="@string/my_claims_list_button" />
