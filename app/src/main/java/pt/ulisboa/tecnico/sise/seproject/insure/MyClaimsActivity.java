@@ -1,6 +1,5 @@
 package pt.ulisboa.tecnico.sise.seproject.insure;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,7 +28,7 @@ public class MyClaimsActivity extends AppCompatActivity {
         // place the claim list in the application domain
         _claimList = new ArrayList<>();
         GlobalState globalState = (GlobalState) getApplicationContext();
-        globalState.setClaimList(_claimList);
+        _claimList = globalState.getClaimList();
 
         //assign adapter to list view
         _listView = (ListView) findViewById(R.id.my_claims_list);
@@ -57,42 +56,8 @@ public class MyClaimsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d(LOG_TAG, "My Claims Buttons is working!");
-                Intent intentMyClaims = new Intent(MyClaimsActivity.this, MainPageActivity.class);
-                startActivity(intentMyClaims);
-                //finish();
-//                Intent intent = new Intent(MyClaimsActivity.this, NewClaimActivity.class);
-//                startActivityForResult(intent, InternalProtocol.NEW_ClAIM_REQUEST);
+                finish();
             }
         });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        switch (requestCode) {
-            case InternalProtocol.NEW_ClAIM_REQUEST:
-
-                if (resultCode == Activity.RESULT_OK) {
-                    // retrieve the claim data from the intent
-                    String claimTitle = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_TITLE);
-                    String claimPlateNumber = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_PLATE_NUMBER);
-                    String claimOccurDate = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_OCCUR_DATE);
-                    String claimDescription = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_DESCRIPTION);
-                    Log.d(InternalProtocol.LOG, "New claim: " + claimTitle + ", " + claimPlateNumber + ", " + claimOccurDate + ", " + claimDescription);
-
-                    // update the domain data structure
-                    _claimList.add(new Claim(claimTitle, claimPlateNumber, claimOccurDate, claimDescription));
-
-                    // refresh the list on screen
-                    _listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, _claimList));
-                } else if (resultCode == Activity.RESULT_CANCELED) {
-                    Log.d(InternalProtocol.LOG, "Cancel pressed.");
-                } else {
-                    Log.d(InternalProtocol.LOG, "Internal error: unknown result code.");
-                }
-                break;
-            default:
-                Log.d(InternalProtocol.LOG, "Internal error: unknown intent message.");
-        }
     }
 }
