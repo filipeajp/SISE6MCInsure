@@ -48,7 +48,7 @@
             android:autofillHints="@string/new_claim_plate_number"
             android:ems="10"
             android:hint="@string/new_claim_plate_number"
-            android:inputType="number" />
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/new_claim_occurrence_date"
@@ -58,7 +58,7 @@
             android:autofillHints="@string/new_claim_occurrence_date"
             android:ems="10"
             android:hint="@string/new_claim_occurrence_date"
-            android:inputType="date|text" />
+            android:inputType="date" />
 
         <EditText
             android:id="@+id/new_claim_description"
