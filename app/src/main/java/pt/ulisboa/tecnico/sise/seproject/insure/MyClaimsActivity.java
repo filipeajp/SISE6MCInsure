@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class MyClaimsActivity extends AppCompatActivity {
 
-    private static final String LOG_TAG = "SISE - SeeListClaims";
+    private static final String LOG_TAG = "SISE - ListClaims";
     private ListView _listView;
     private ArrayList<Claim> _claimList;
     private Button buttonBack;
