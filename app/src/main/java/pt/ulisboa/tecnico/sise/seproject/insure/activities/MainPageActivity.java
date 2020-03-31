@@ -1,4 +1,4 @@
-package pt.ulisboa.tecnico.sise.seproject.insure;
+package pt.ulisboa.tecnico.sise.seproject.insure.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +11,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+
+import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
+import pt.ulisboa.tecnico.sise.seproject.insure.InternalProtocol;
+import pt.ulisboa.tecnico.sise.seproject.insure.R;
 
 public class MainPageActivity extends AppCompatActivity {
     private ArrayList<Claim> _claimList;

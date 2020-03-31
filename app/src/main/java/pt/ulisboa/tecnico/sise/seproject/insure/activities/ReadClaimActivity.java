@@ -1,4 +1,4 @@
-package pt.ulisboa.tecnico.sise.seproject.insure;
+package pt.ulisboa.tecnico.sise.seproject.insure.activities;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +7,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
+import pt.ulisboa.tecnico.sise.seproject.insure.InternalProtocol;
+import pt.ulisboa.tecnico.sise.seproject.insure.R;
 
 public class ReadClaimActivity extends AppCompatActivity {
     private static final String LOG_TAG = "SISE - ReadClaims";

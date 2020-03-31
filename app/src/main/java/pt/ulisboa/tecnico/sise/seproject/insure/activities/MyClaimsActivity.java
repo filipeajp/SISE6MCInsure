@@ -1,4 +1,4 @@
-package pt.ulisboa.tecnico.sise.seproject.insure;
+package pt.ulisboa.tecnico.sise.seproject.insure.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,10 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+
+import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
+import pt.ulisboa.tecnico.sise.seproject.insure.InternalProtocol;
+import pt.ulisboa.tecnico.sise.seproject.insure.R;
 
 public class MyClaimsActivity extends AppCompatActivity {
 

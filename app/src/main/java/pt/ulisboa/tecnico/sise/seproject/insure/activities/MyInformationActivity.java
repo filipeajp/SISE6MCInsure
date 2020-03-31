@@ -1,4 +1,4 @@
-package pt.ulisboa.tecnico.sise.seproject.insure;
+package pt.ulisboa.tecnico.sise.seproject.insure.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import pt.ulisboa.tecnico.sise.seproject.insure.R;
 
 public class MyInformationActivity extends AppCompatActivity {
     private static final String LOG_TAG = "SISE - MyInformation";
