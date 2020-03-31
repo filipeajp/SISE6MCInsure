@@ -4,14 +4,16 @@ import android.app.Application;
 
 import java.util.ArrayList;
 
-public class GlobalState extends Application {
-    private ArrayList<Claim> _claimList;
+import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimRecord;
 
-    public ArrayList<Claim> getClaimList() {
+public class GlobalState extends Application {
+    private ArrayList<ClaimRecord> _claimList;
+
+    public ArrayList<ClaimRecord> getClaimList() {
         return _claimList;
     }
 
-    public void setClaimList(ArrayList<Claim> claimList) {
+    public void setClaimList(ArrayList<ClaimRecord> claimList) {
         _claimList = claimList;
     }
 

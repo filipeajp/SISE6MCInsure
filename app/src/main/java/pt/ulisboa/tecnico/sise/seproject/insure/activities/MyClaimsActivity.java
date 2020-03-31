@@ -16,12 +16,13 @@ import java.util.ArrayList;
 import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
 import pt.ulisboa.tecnico.sise.seproject.insure.InternalProtocol;
 import pt.ulisboa.tecnico.sise.seproject.insure.R;
+import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimRecord;
 
 public class MyClaimsActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = "SISE - ListClaims";
     private ListView _listView;
-    private ArrayList<Claim> _claimList;
+    private ArrayList<ClaimRecord> _claimList;
     private Button buttonBack;
 
     @Override
@@ -36,7 +37,7 @@ public class MyClaimsActivity extends AppCompatActivity {
 
         //assign adapter to list view
         _listView = (ListView) findViewById(R.id.my_claims_list);
-        ArrayAdapter<Claim> adpater = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, _claimList);
+        ArrayAdapter<ClaimRecord> adpater = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, _claimList);
         _listView.setAdapter(adpater);
 
         // attach click listener to list view items

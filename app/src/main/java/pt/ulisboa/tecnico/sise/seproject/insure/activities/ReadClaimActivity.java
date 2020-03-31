@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
 import pt.ulisboa.tecnico.sise.seproject.insure.InternalProtocol;
 import pt.ulisboa.tecnico.sise.seproject.insure.R;
+import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimRecord;
 
 public class ReadClaimActivity extends AppCompatActivity {
     private static final String LOG_TAG = "SISE - ReadClaims";
@@ -41,13 +42,13 @@ public class ReadClaimActivity extends AppCompatActivity {
 
         //obtain a reference to the claim's data structure
         GlobalState context = (GlobalState) getApplicationContext();
-        Claim claim = context.getClaimList().get(index);
+        ClaimRecord claim = context.getClaimList().get(index);
 
         // update the UI
         TextView claimTitleView = findViewById(R.id.read_claim_title);
         claimTitleView.setText(claim.getTitle());
         TextView claimPlateNumberView = findViewById(R.id.read_claim_plate_number);
-        claimPlateNumberView.setText(claim.getPlateNumber());
+        claimPlateNumberView.setText(claim.getPlate());
         TextView claimOccurDateView = findViewById(R.id.read_claim_date);
         claimOccurDateView.setText(claim.getOccurrenceDate());
         TextView claimDescriptionView = findViewById(R.id.read_claim_description);

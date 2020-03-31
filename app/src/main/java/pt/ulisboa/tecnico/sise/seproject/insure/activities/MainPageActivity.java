@@ -1,5 +1,6 @@
 package pt.ulisboa.tecnico.sise.seproject.insure.activities;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,9 +16,11 @@ import java.util.ArrayList;
 import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
 import pt.ulisboa.tecnico.sise.seproject.insure.InternalProtocol;
 import pt.ulisboa.tecnico.sise.seproject.insure.R;
+import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimMessage;
+import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimRecord;
 
 public class MainPageActivity extends AppCompatActivity {
-    private ArrayList<Claim> _claimList;
+    private ArrayList<ClaimRecord> _claimList;
     private Button buttonLogout;
     private TextView textViewHelloMessage;
     private Button buttonMyInformation;
@@ -97,8 +100,10 @@ public class MainPageActivity extends AppCompatActivity {
                     String claimDescription = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_DESCRIPTION);
                     Log.d(InternalProtocol.LOG, "New claim: " + claimTitle + ", " + claimPlateNumber + ", " + claimOccurDate + ", " + claimDescription);
 
+
                     // update the domain data structure
-                    _claimList.add(new Claim(claimTitle, claimPlateNumber, claimOccurDate, claimDescription));
+                    // CORRIGIR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+                    _claimList.add(new ClaimRecord(1, claimTitle, claimPlateNumber, claimOccurDate, claimDescription, "jfd", "", new ArrayList<ClaimMessage>()));
 
                 } else if (resultCode == Activity.RESULT_CANCELED) {
                     Log.d(InternalProtocol.LOG, "Cancel pressed.");
