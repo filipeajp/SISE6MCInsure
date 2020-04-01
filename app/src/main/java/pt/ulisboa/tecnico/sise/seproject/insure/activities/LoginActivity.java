@@ -1,15 +1,16 @@
 package pt.ulisboa.tecnico.sise.seproject.insure.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
 import pt.ulisboa.tecnico.sise.seproject.insure.R;
+import pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks.LoginTask;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -17,13 +18,16 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editTextUsername;
     private EditText editTextPassword;
 
-    private String username;
-    private String password;
+    private String _username;
+    private String _password;
+    private int _sessionId = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        final GlobalState globalState = (GlobalState) getApplicationContext();
 
         buttonLogin = findViewById(R.id.login_button);
         editTextUsername = findViewById(R.id.login_user_name);
@@ -32,18 +36,21 @@ public class LoginActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                username = editTextUsername.getText().toString();
-                password = editTextPassword.getText().toString();
+                _username = editTextUsername.getText().toString();
+                _password = editTextPassword.getText().toString();
 
-                // password has to be 1234 for now
-                if (password.equals("1234")) {
-                    Intent intent = new Intent(LoginActivity.this, MainPageActivity.class);
-                    intent.putExtra("USERNAME", username);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(view.getContext(), "Wrong password!", Toast.LENGTH_SHORT).show();
-                }
+                Log.d("sise", _username + " " + _password);
+                new LoginTask(_username, _password, globalState, view.getContext()).execute();
+
+//                if (globalState.getSessionId() <= 0) {
+//                    Log.d("Call", "" + globalState.getSessionId());
+//                    Toast.makeText(view.getContext(), "Login failed! Username or password incorrect.", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Intent intent = new Intent(LoginActivity.this, MainPageActivity.class);
+//                    intent.putExtra("USERNAME", _username);
+//                    startActivity(intent);
+//                    finish();
+//                }
             }
         });
 
