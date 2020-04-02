@@ -1,6 +1,5 @@
 package pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -59,11 +58,11 @@ public class NewClaimTask extends AsyncTask<Void, Void, Void> {
         resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_OCCUR_DATE, _occurDate);
         resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_DESCRIPTION, _description);
 
-        setResult(Activity.RESULT_OK, resultIntent);
+        //setResult(Activity.RESULT_OK, resultIntent);
 
         // write a toast message
         Toast.makeText(_context, "Claim submitted", Toast.LENGTH_LONG).show();
-        finish();
+        //finish();
     }
 }
 
