@@ -56,6 +56,7 @@ public class LoginTask extends AsyncTask<Void, Integer, Integer> {
         } else {
             Intent intent = new Intent(this.context, MainPageActivity.class);
             intent.putExtra("USERNAME", _username);
+            intent.putExtra("SESSIONID", result);
             context.startActivity(intent);
             ((Activity) context).finish();
             //super.onPostExecute(result);
