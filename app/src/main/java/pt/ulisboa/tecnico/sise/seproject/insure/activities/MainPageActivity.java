@@ -32,12 +32,14 @@ public class MainPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
+
         // place the claim list in the application domain
         _claimList = new ArrayList<>();
         GlobalState globalState = (GlobalState) getApplicationContext();
         globalState.setClaimList(_claimList);
 
         buttonLogout = findViewById(R.id.main_page_logout_button);
+        Log.d("Insure", "" + globalState.getSessionId());
 
         // change hello message
         textViewHelloMessage = findViewById(R.id.main_page_hello_message);

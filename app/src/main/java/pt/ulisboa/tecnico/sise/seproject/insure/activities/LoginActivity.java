@@ -42,15 +42,6 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d("sise", _username + " " + _password);
                 new LoginTask(_username, _password, globalState, view.getContext()).execute();
 
-//                if (globalState.getSessionId() <= 0) {
-//                    Log.d("Call", "" + globalState.getSessionId());
-//                    Toast.makeText(view.getContext(), "Login failed! Username or password incorrect.", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Intent intent = new Intent(LoginActivity.this, MainPageActivity.class);
-//                    intent.putExtra("USERNAME", _username);
-//                    startActivity(intent);
-//                    finish();
-//                }
             }
         });
 

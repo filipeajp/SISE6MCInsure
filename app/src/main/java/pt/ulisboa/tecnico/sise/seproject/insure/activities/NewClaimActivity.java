@@ -1,7 +1,6 @@
 package pt.ulisboa.tecnico.sise.seproject.insure.activities;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,8 +10,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import pt.ulisboa.tecnico.sise.seproject.insure.InternalProtocol;
+import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
 import pt.ulisboa.tecnico.sise.seproject.insure.R;
+import pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks.NewClaimTask;
 
 public class NewClaimActivity extends AppCompatActivity {
     private static final String LOG_TAG = "SISE - NewClaim";
@@ -28,6 +28,8 @@ public class NewClaimActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_claim);
         Log.d(LOG_TAG, "Create claim in process...");
+
+        final GlobalState globalState = (GlobalState) getApplicationContext();
 
         buttonSubmit = (Button) findViewById(R.id.new_claim_btn_submit);
         buttonCancel = (Button) findViewById(R.id.new_claim_btn_cancel);
@@ -48,24 +50,7 @@ public class NewClaimActivity extends AppCompatActivity {
                 String claimOccurDate = editTextOccurrenceDate.getText().toString();
                 String claimDesc = editTextDesc.getText().toString();
 
-                if (claimTitle.equals("")) {
-                    Toast.makeText(view.getContext(), "Write a claim title", Toast.LENGTH_LONG).show();
-                    return;
-                }
-
-                //return an intent containing the title and body of the new note
-                Intent resultIntent = new Intent();
-
-                resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_TITLE, claimTitle);
-                resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_PLATE_NUMBER, claimPlateNumber);
-                resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_OCCUR_DATE, claimOccurDate);
-                resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_DESCRIPTION, claimDesc);
-
-                setResult(Activity.RESULT_OK, resultIntent);
-
-                // write a toast message
-                Toast.makeText(view.getContext(), "Claim submitted", Toast.LENGTH_LONG).show();
-                finish();
+                new NewClaimTask(view.getContext(), globalState.getSessionId(), claimTitle, claimOccurDate, claimPlateNumber, claimDesc);
             }
         });
 
@@ -75,9 +60,6 @@ public class NewClaimActivity extends AppCompatActivity {
                 // return the return code only; no intent message is required
                 setResult(Activity.RESULT_CANCELED);
 
-                //Intent intent = new Intent(NewClaimActivity.this, MainPageActivity.class);
-                //startActivity(intent);
-                // write  a toast message
                 Toast.makeText(view.getContext(), "Claim submission cancelled", Toast.LENGTH_SHORT).show();
                 // finish activity
                 finish();
