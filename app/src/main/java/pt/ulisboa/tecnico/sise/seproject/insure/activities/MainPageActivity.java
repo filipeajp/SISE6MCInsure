@@ -16,11 +16,12 @@ import java.util.ArrayList;
 import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
 import pt.ulisboa.tecnico.sise.seproject.insure.InternalProtocol;
 import pt.ulisboa.tecnico.sise.seproject.insure.R;
+import pt.ulisboa.tecnico.sise.seproject.insure.TaskCallBack;
 import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimMessage;
 import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimRecord;
 import pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks.LogoutTask;
 
-public class MainPageActivity extends AppCompatActivity {
+public class MainPageActivity extends AppCompatActivity implements TaskCallBack {
     private ArrayList<ClaimRecord> _claimList;
     private Button buttonLogout;
     private TextView textViewHelloMessage;
@@ -117,4 +118,8 @@ public class MainPageActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void done() {
+        finish();
+    }
 }

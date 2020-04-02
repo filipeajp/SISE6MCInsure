@@ -8,6 +8,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
+import pt.ulisboa.tecnico.sise.seproject.insure.TaskCallBack;
 import pt.ulisboa.tecnico.sise.seproject.insure.WSHelper;
 import pt.ulisboa.tecnico.sise.seproject.insure.activities.LoginActivity;
 
@@ -43,7 +44,9 @@ public class LogoutTask extends AsyncTask<Void, Void, Boolean> {
             //open login activity
             Intent intent = new Intent(this._context, LoginActivity.class);
             _context.startActivity(intent);
-            ((Activity)_context).finish();
+
+            ((TaskCallBack)_context).done();
+
         } else {
             Toast.makeText(_context, "Unable to logout...", Toast.LENGTH_SHORT).show();
         }
