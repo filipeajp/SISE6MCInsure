@@ -18,6 +18,7 @@ import pt.ulisboa.tecnico.sise.seproject.insure.InternalProtocol;
 import pt.ulisboa.tecnico.sise.seproject.insure.R;
 import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimMessage;
 import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimRecord;
+import pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks.LogoutTask;
 
 public class MainPageActivity extends AppCompatActivity {
     private ArrayList<ClaimRecord> _claimList;
@@ -35,13 +36,13 @@ public class MainPageActivity extends AppCompatActivity {
 
         // place the claim list in the application domain
         _claimList = new ArrayList<>();
-        GlobalState globalState = (GlobalState) getApplicationContext();
+        final GlobalState globalState = (GlobalState) getApplicationContext();
         globalState.setClaimList(_claimList);
 
         buttonLogout = findViewById(R.id.main_page_logout_button);
         Log.d("Insure", "" + globalState.getSessionId());
 
-        // change hello message
+        // Hello Message: maybe create asyncTask?
         textViewHelloMessage = findViewById(R.id.main_page_hello_message);
         Bundle extras = getIntent().getExtras();
         String username = extras.getString("USERNAME");
@@ -54,9 +55,8 @@ public class MainPageActivity extends AppCompatActivity {
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainPageActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
+
+                new LogoutTask(globalState, view.getContext()).execute();
             }
         });
 
