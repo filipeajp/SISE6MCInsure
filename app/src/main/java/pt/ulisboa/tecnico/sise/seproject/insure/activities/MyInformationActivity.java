@@ -9,8 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
 import pt.ulisboa.tecnico.sise.seproject.insure.R;
-import pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks.LoginTask;
+import pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks.MyInformationTask;
 
 public class MyInformationActivity extends AppCompatActivity {
     private static final String LOG_TAG = "SISE - MyInformation";
@@ -28,13 +29,16 @@ public class MyInformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_information);
 
+        GlobalState globalState = (GlobalState) getApplicationContext();
+        int sessionId = globalState.getSessionId();
+
         textViewName = findViewById(R.id.my_information_name);
         textViewDateOfBirth = findViewById(R.id.my_information_birth);
         textViewAddress = findViewById(R.id.my_information_address);
         textViewNif = findViewById(R.id.my_information_nif);
         textViewPolicyNr = findViewById(R.id.my_information_policy_nr);
 
-        //new MyInformationTask().execute();
+        new MyInformationTask(sessionId, textViewName, textViewDateOfBirth, textViewAddress, textViewNif, textViewPolicyNr).execute();
 
         buttonBack = findViewById(R.id.my_information_back_button);
 
