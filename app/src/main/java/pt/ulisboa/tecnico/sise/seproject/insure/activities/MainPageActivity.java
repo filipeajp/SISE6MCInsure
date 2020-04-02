@@ -71,7 +71,6 @@ public class MainPageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainPageActivity.this, NewClaimActivity.class);
                 startActivityForResult(intent, InternalProtocol.NEW_ClAIM_REQUEST);
-                //finish();
             }
         });
 
@@ -80,7 +79,6 @@ public class MainPageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainPageActivity.this, MyClaimsActivity.class);
                 startActivity(intent);
-                //finish();
             }
         });
 
@@ -102,7 +100,7 @@ public class MainPageActivity extends AppCompatActivity {
 
 
                     // update the domain data structure
-                    // CORRIGIR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+                    // CORRIGIR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     _claimList.add(new ClaimRecord(1, claimTitle, claimPlateNumber, claimOccurDate, claimDescription, "jfd", "", new ArrayList<ClaimMessage>()));
 
                 } else if (resultCode == Activity.RESULT_CANCELED) {

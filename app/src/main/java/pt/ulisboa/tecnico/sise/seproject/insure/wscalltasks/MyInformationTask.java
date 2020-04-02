@@ -42,7 +42,7 @@ public class MyInformationTask extends AsyncTask<Void, Void, Customer> {
 
     @Override
     protected void onPostExecute(Customer c) {
-        this._textViewName.setText(c.getUsername());
+        this._textViewName.setText(c.getName());
         this._textViewDateOfBirth.setText(String.valueOf(c.getDateOfBirth()));
         this._textViewAddress.setText(c.getAddress());
         this._textViewNif.setText(String.valueOf(c.getFiscalNumber()));
