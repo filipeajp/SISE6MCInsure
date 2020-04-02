@@ -11,7 +11,7 @@ import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
 import pt.ulisboa.tecnico.sise.seproject.insure.WSHelper;
 import pt.ulisboa.tecnico.sise.seproject.insure.activities.MainPageActivity;
 
-public class LoginTask extends AsyncTask<Void, Integer, Integer> {
+public class LoginTask extends AsyncTask<Void, Void, Integer> {
     public final static String TAG = "LoginCallTask";
     GlobalState _globalState;
     private String _username;
@@ -28,24 +28,18 @@ public class LoginTask extends AsyncTask<Void, Integer, Integer> {
 
     @Override
     protected Integer doInBackground(Void... params) {
-        int sessionId = -1;
-
         try {
-            sessionId = WSHelper.login(_username, _password);        // username doesn't exist
-            Log.d(TAG, "Login result => " + sessionId);
-            publishProgress(sessionId);
+            _sessionId = WSHelper.login(_username, _password);        // username doesn't exist
+            Log.d(TAG, "Login result => " + _sessionId);
         } catch (Exception e) {
             Log.d(TAG, e.toString());
-            publishProgress(sessionId);
-
         }
-        return sessionId;
+        return _sessionId;
 
     }
 
     @Override
-    protected void onProgressUpdate(Integer... value) {
-        //_sessionId = value[0];
+    protected void onProgressUpdate(Void... params) {
     }
 
     protected void onPostExecute(Integer result) {

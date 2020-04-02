@@ -12,9 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
 import pt.ulisboa.tecnico.sise.seproject.insure.R;
+import pt.ulisboa.tecnico.sise.seproject.insure.TaskCallBack;
 import pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks.NewClaimTask;
 
-public class NewClaimActivity extends AppCompatActivity {
+public class NewClaimActivity extends AppCompatActivity implements TaskCallBack {
     private static final String LOG_TAG = "SISE - NewClaim";
     private Button buttonSubmit;
     private Button buttonCancel;
@@ -38,6 +39,7 @@ public class NewClaimActivity extends AppCompatActivity {
         editTextOccurrenceDate = (EditText) findViewById(R.id.new_claim_occurrence_date);
         editTextDesc = (EditText) findViewById(R.id.new_claim_description);
 
+
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,9 +52,10 @@ public class NewClaimActivity extends AppCompatActivity {
                 String claimOccurDate = editTextOccurrenceDate.getText().toString();
                 String claimDesc = editTextDesc.getText().toString();
 
-                new NewClaimTask(view.getContext(), globalState.getSessionId(), claimTitle, claimOccurDate, claimPlateNumber, claimDesc);
+                new NewClaimTask(view.getContext(), globalState.getSessionId(), claimTitle, claimOccurDate, claimPlateNumber, claimDesc).execute();
             }
         });
+
 
         buttonCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,4 +69,12 @@ public class NewClaimActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void done() {
+        finish();
+    }
+
+
 }
+
