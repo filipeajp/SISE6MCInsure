@@ -6,24 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activities.MyInformationActivity">
 
-    <Button
-        android:id="@+id/my_information_back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="200dp"
-        android:layout_marginTop="84dp"
-        android:background="@color/colorPrimaryDark"
-        android:drawableLeft="@android:drawable/ic_menu_revert"
-        android:drawablePadding="10dp"
-        android:padding="10dp"
-        android:text="@string/my_information_back_button"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
@@ -160,6 +142,7 @@
                     android:gravity="end"
                     android:text="@string/my_information_nif"
                     android:textSize="18sp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -190,5 +173,22 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/my_information_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:drawableLeft="@android:drawable/ic_menu_revert"
+        android:drawablePadding="10dp"
+        android:paddingRight="15dp"
+        android:text="@string/my_information_back_button"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
