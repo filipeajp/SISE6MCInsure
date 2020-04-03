@@ -1,13 +1,13 @@
 package pt.ulisboa.tecnico.sise.seproject.insure.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
 import pt.ulisboa.tecnico.sise.seproject.insure.R;
@@ -22,7 +22,7 @@ public class MyInformationActivity extends AppCompatActivity {
     private TextView textViewNif;
     private TextView textViewPolicyNr;
 
-    private Button  buttonBack;
+    private Button buttonBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class MyInformationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_information);
 
         GlobalState globalState = (GlobalState) getApplicationContext();
-        int sessionId = globalState.getSessionId();
+        int sessionId = globalState.getCustomer().getSessionId();
 
         textViewName = findViewById(R.id.my_information_name);
         textViewDateOfBirth = findViewById(R.id.my_information_birth);

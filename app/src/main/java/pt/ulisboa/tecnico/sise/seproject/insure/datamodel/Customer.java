@@ -7,12 +7,12 @@ import java.util.List;
 public class Customer extends Person implements Serializable {
 
     private static final long serialVersionUID = 4895739450784438738L;
+    private final List<ClaimRecord> _claimList;
+    private final List<String> _plateList;
     private String _username;
     //    private String _password;
     private int _policyNumber;
     private int _sessionId = -1;
-//    private final List<ClaimRecord> _claimList;
-//    private final List<String> _plateList;
 
     public Customer(String username, String password, int sessionId, int policyNumber,
                     Person person, List<ClaimRecord> claimList, List<String> plateList) {
@@ -21,8 +21,8 @@ public class Customer extends Person implements Serializable {
 //        _password = password;
         _sessionId = sessionId;
         _policyNumber = policyNumber;
-//        _claimList = claimList;
-//        _plateList = plateList;
+        _claimList = claimList;
+        _plateList = plateList;
     }
 
     public Customer(String username, String password, int policyNumber,
@@ -94,21 +94,21 @@ public class Customer extends Person implements Serializable {
         setSessionId(-1);
     }
 
-//    public List<ClaimRecord> getClaimRecordList() {
-//        return _claimList;
-//    }
-//
-//    public List<String> getPlateList() {
-//        return _plateList;
-//    }
-//
-//    public boolean addClaim(ClaimRecord claimRecord) {
-//        return _claimList.add(claimRecord);
-//    }
-//
-//    public void addPlate(String plate) {
-//        _plateList.add(plate);
-//    }
+    public List<ClaimRecord> getClaimRecordList() {
+        return _claimList;
+    }
+
+    public List<String> getPlateList() {
+        return _plateList;
+    }
+
+    public boolean addClaim(ClaimRecord claimRecord) {
+        return _claimList.add(claimRecord);
+    }
+
+    public void addPlate(String plate) {
+        _plateList.add(plate);
+    }
 //
 //    public boolean removeClaim(ClaimRecord claimRecord) {
 //        boolean res = false;

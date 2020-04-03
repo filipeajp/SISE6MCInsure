@@ -8,7 +8,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import pt.ulisboa.tecnico.sise.seproject.insure.InternalProtocol;
-import pt.ulisboa.tecnico.sise.seproject.insure.TaskCallBack;
 import pt.ulisboa.tecnico.sise.seproject.insure.WSHelper;
 
 public class NewClaimTask extends AsyncTask<Void, Void, String> {
@@ -60,6 +59,8 @@ public class NewClaimTask extends AsyncTask<Void, Void, String> {
 
             resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_TITLE, _title);
             resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_PLATE_NUMBER, _plateNumber);
+
+            // se a plate não estiver na base de dados adicionar à lista plates do cliente!!!!!!!!!!!!!!!!!!!!!!!!!!
             resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_OCCUR_DATE, _occurDate);
             resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_DESCRIPTION, _description);
 
@@ -67,7 +68,6 @@ public class NewClaimTask extends AsyncTask<Void, Void, String> {
 
             // write a toast message
             Toast.makeText(_context, "Claim submitted", Toast.LENGTH_LONG).show();
-
             ((TaskCallBack) _context).done();
         } else {
             // do something

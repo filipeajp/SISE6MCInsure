@@ -42,7 +42,7 @@ public class ReadClaimActivity extends AppCompatActivity {
 
         //obtain a reference to the claim's data structure
         GlobalState context = (GlobalState) getApplicationContext();
-        ClaimRecord claim = context.getClaimList().get(index);
+        ClaimRecord claim = context.getCustomer().getClaimRecordList().get(index);
 
         // update the UI
         TextView claimTitleView = findViewById(R.id.read_claim_title);

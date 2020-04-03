@@ -12,17 +12,20 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
 import pt.ulisboa.tecnico.sise.seproject.insure.InternalProtocol;
 import pt.ulisboa.tecnico.sise.seproject.insure.R;
-import pt.ulisboa.tecnico.sise.seproject.insure.TaskCallBack;
 import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimMessage;
 import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimRecord;
+import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.Customer;
 import pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks.LogoutTask;
+import pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks.TaskCallBack;
 
 public class MainPageActivity extends AppCompatActivity implements TaskCallBack {
-    private ArrayList<ClaimRecord> _claimList;
+    private List<ClaimRecord> _claimList;
+    private Customer _customer;
     private Button buttonLogout;
     private TextView textViewHelloMessage;
     private Button buttonMyInformation;
@@ -38,16 +41,16 @@ public class MainPageActivity extends AppCompatActivity implements TaskCallBack 
         // place the claim list in the application domain
         _claimList = new ArrayList<>();
         final GlobalState globalState = (GlobalState) getApplicationContext();
-        globalState.setClaimList(_claimList);
+        _customer = globalState.getCustomer();
 
         buttonLogout = findViewById(R.id.main_page_logout_button);
-        Log.d("Insure", "" + globalState.getSessionId());
+        //Log.d("Insure", "" + globalState.getCustomer().getSessionId());
 
         // Hello Message: maybe create asyncTask?
         textViewHelloMessage = findViewById(R.id.main_page_hello_message);
         Bundle extras = getIntent().getExtras();
         String username = extras.getString("USERNAME");
-        textViewHelloMessage.setText("Hello " + username + " !");
+        textViewHelloMessage.setText("Hello " + username + "!");
 
         buttonMyInformation = findViewById(R.id.main_page_my_information_button);
         buttonNewClaim = findViewById(R.id.main_page_new_claim_button);
@@ -88,6 +91,11 @@ public class MainPageActivity extends AppCompatActivity implements TaskCallBack 
     }
 
     @Override
+    public void done() {
+        finish();
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         switch (requestCode) {
@@ -102,9 +110,11 @@ public class MainPageActivity extends AppCompatActivity implements TaskCallBack 
                     Log.d(InternalProtocol.LOG, "New claim: " + claimTitle + ", " + claimPlateNumber + ", " + claimOccurDate + ", " + claimDescription);
 
 
+                    if (_customer.getPlateList().contains(claimPlateNumber))
+                        _customer.addPlate(claimPlateNumber);
                     // update the domain data structure
                     // CORRIGIR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    _claimList.add(new ClaimRecord(1, claimTitle, claimPlateNumber, claimOccurDate, claimDescription, "jfd", "", new ArrayList<ClaimMessage>()));
+                    _customer.addClaim(new ClaimRecord(1, claimTitle, claimPlateNumber, claimOccurDate, claimDescription, "jfd", "", new ArrayList<ClaimMessage>()));
 
                 } else if (resultCode == Activity.RESULT_CANCELED) {
                     Log.d(InternalProtocol.LOG, "Cancel pressed.");
@@ -118,8 +128,4 @@ public class MainPageActivity extends AppCompatActivity implements TaskCallBack 
     }
 
 
-    @Override
-    public void done() {
-        finish();
-    }
 }

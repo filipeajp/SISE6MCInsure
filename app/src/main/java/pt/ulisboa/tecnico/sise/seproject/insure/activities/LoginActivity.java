@@ -11,8 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
 import pt.ulisboa.tecnico.sise.seproject.insure.R;
 import pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks.LoginTask;
+import pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks.TaskCallBack;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements TaskCallBack {
 
     private Button buttonLogin;
     private EditText editTextUsername;
@@ -20,7 +21,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private String _username;
     private String _password;
-    private int _sessionId = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,5 +45,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void done() {
+        finish();
     }
 }

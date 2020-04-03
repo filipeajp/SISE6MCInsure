@@ -1,6 +1,5 @@
 package pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -10,6 +9,7 @@ import android.widget.Toast;
 import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
 import pt.ulisboa.tecnico.sise.seproject.insure.WSHelper;
 import pt.ulisboa.tecnico.sise.seproject.insure.activities.MainPageActivity;
+import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.Customer;
 
 public class LoginTask extends AsyncTask<Void, Void, Integer> {
     public final static String TAG = "LoginCallTask";
@@ -34,6 +34,14 @@ public class LoginTask extends AsyncTask<Void, Void, Integer> {
         } catch (Exception e) {
             Log.d(TAG, e.toString());
         }
+
+        try {
+            Customer c = WSHelper.getCustomerInfo(_sessionId);
+            _globalState.set_customer(c);
+        } catch (Exception e) {
+            Log.d(TAG, e.toString());
+        }
+
         return _sessionId;
 
     }
@@ -44,15 +52,14 @@ public class LoginTask extends AsyncTask<Void, Void, Integer> {
 
     protected void onPostExecute(Integer result) {
         Log.d(TAG, "result => " + result);
-        _globalState.setSessionId((int) result);
+        _globalState.getCustomer().setSessionId((result));
         if (result <= 0) {
             Toast.makeText(context, "Login failed! Username or password incorrect.", Toast.LENGTH_SHORT).show();
         } else {
             Intent intent = new Intent(this.context, MainPageActivity.class);
-            intent.putExtra("USERNAME", _username);
+            intent.putExtra("USERNAME", _globalState.getCustomer().getName());
             context.startActivity(intent);
-            ((Activity) context).finish();
-            //super.onPostExecute(result);
+            ((TaskCallBack) context).done();
         }
     }
 }

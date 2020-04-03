@@ -1,6 +1,5 @@
 package pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -8,7 +7,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
-import pt.ulisboa.tecnico.sise.seproject.insure.TaskCallBack;
 import pt.ulisboa.tecnico.sise.seproject.insure.WSHelper;
 import pt.ulisboa.tecnico.sise.seproject.insure.activities.LoginActivity;
 
@@ -26,7 +24,7 @@ public class LogoutTask extends AsyncTask<Void, Void, Boolean> {
 
     @Override
     protected Boolean doInBackground(Void... voids) {
-        Integer sessionId = _globalState.getSessionId();
+        Integer sessionId = _globalState.getCustomer().getSessionId();
         try {
             return WSHelper.logout(sessionId);
         } catch (Exception e) {
@@ -39,13 +37,13 @@ public class LogoutTask extends AsyncTask<Void, Void, Boolean> {
     protected void onPostExecute(Boolean b) {
         if (b) {
             //reset session id
-            _globalState.setSessionId(-1);
+            _globalState.getCustomer().setSessionId(-1);
 
             //open login activity
             Intent intent = new Intent(this._context, LoginActivity.class);
             _context.startActivity(intent);
 
-            ((TaskCallBack)_context).done();
+            ((TaskCallBack) _context).done();
 
         } else {
             Toast.makeText(_context, "Unable to logout...", Toast.LENGTH_SHORT).show();

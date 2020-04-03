@@ -5,24 +5,25 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
 import pt.ulisboa.tecnico.sise.seproject.insure.InternalProtocol;
 import pt.ulisboa.tecnico.sise.seproject.insure.R;
 import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimRecord;
+import pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks.MyClaimsTask;
 
 public class MyClaimsActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = "SISE - ListClaims";
     private ListView _listView;
-    private ArrayList<ClaimRecord> _claimList;
+    private List<ClaimRecord> _claimList;
     private Button buttonBack;
 
     @Override
@@ -33,12 +34,15 @@ public class MyClaimsActivity extends AppCompatActivity {
         // place the claim list in the application domain
         _claimList = new ArrayList<>();
         GlobalState globalState = (GlobalState) getApplicationContext();
-        _claimList = globalState.getClaimList();
+        //_claimList = globalState.getCustomer().getClaimRecordList();
+        int session_id = globalState.getCustomer().getSessionId();
 
         //assign adapter to list view
         _listView = (ListView) findViewById(R.id.my_claims_list);
-        ArrayAdapter<ClaimRecord> adpater = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, _claimList);
-        _listView.setAdapter(adpater);
+
+        new MyClaimsTask(session_id, _listView, this.getApplicationContext()).execute();
+        //ArrayAdapter<ClaimRecord> adpater = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, _claimList);
+        //_listView.setAdapter(adpater);
 
         // attach click listener to list view items
         _listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

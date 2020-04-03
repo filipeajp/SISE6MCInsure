@@ -12,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
 import pt.ulisboa.tecnico.sise.seproject.insure.R;
-import pt.ulisboa.tecnico.sise.seproject.insure.TaskCallBack;
 import pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks.NewClaimTask;
+import pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks.TaskCallBack;
 
 public class NewClaimActivity extends AppCompatActivity implements TaskCallBack {
     private static final String LOG_TAG = "SISE - NewClaim";
@@ -52,7 +52,7 @@ public class NewClaimActivity extends AppCompatActivity implements TaskCallBack 
                 String claimOccurDate = editTextOccurrenceDate.getText().toString();
                 String claimDesc = editTextDesc.getText().toString();
 
-                new NewClaimTask(view.getContext(), globalState.getSessionId(), claimTitle, claimOccurDate, claimPlateNumber, claimDesc).execute();
+                new NewClaimTask(view.getContext(), globalState.getCustomer().getSessionId(), claimTitle, claimOccurDate, claimPlateNumber, claimDesc).execute();
             }
         });
 
