@@ -59,18 +59,15 @@ public class NewClaimTask extends AsyncTask<Void, Void, String> {
 
             resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_TITLE, _title);
             resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_PLATE_NUMBER, _plateNumber);
-
-            // se a plate não estiver na base de dados adicionar à lista plates do cliente!!!!!!!!!!!!!!!!!!!!!!!!!!
             resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_OCCUR_DATE, _occurDate);
             resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_DESCRIPTION, _description);
 
             ((Activity) _context).setResult(Activity.RESULT_OK, resultIntent);
 
-            // write a toast message
             Toast.makeText(_context, "Claim submitted", Toast.LENGTH_LONG).show();
             ((TaskCallBack) _context).done();
         } else {
-            // do something
+            Toast.makeText(_context, "Submission error. Please review information submitted or press Cancel to go back to Main Page", Toast.LENGTH_LONG).show();
         }
     }
 }

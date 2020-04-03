@@ -34,15 +34,12 @@ public class MyClaimsActivity extends AppCompatActivity {
         // place the claim list in the application domain
         _claimList = new ArrayList<>();
         GlobalState globalState = (GlobalState) getApplicationContext();
-        //_claimList = globalState.getCustomer().getClaimRecordList();
         int session_id = globalState.getCustomer().getSessionId();
 
         //assign adapter to list view
         _listView = (ListView) findViewById(R.id.my_claims_list);
 
         new MyClaimsTask(session_id, _listView, this.getApplicationContext()).execute();
-        //ArrayAdapter<ClaimRecord> adpater = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, _claimList);
-        //_listView.setAdapter(adpater);
 
         // attach click listener to list view items
         _listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

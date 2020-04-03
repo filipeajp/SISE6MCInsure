@@ -31,19 +31,12 @@ public class LoginTask extends AsyncTask<Void, Void, Integer> {
         try {
             _sessionId = WSHelper.login(_username, _password);        // username doesn't exist
             Log.d(TAG, "Login result => " + _sessionId);
-        } catch (Exception e) {
-            Log.d(TAG, e.toString());
-        }
-
-        try {
             Customer c = WSHelper.getCustomerInfo(_sessionId);
             _globalState.set_customer(c);
         } catch (Exception e) {
             Log.d(TAG, e.toString());
         }
-
         return _sessionId;
-
     }
 
     @Override

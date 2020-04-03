@@ -17,7 +17,6 @@ import java.util.List;
 import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
 import pt.ulisboa.tecnico.sise.seproject.insure.InternalProtocol;
 import pt.ulisboa.tecnico.sise.seproject.insure.R;
-import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimMessage;
 import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimRecord;
 import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.Customer;
 import pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks.LogoutTask;
@@ -102,20 +101,20 @@ public class MainPageActivity extends AppCompatActivity implements TaskCallBack 
             case InternalProtocol.NEW_ClAIM_REQUEST:
 
                 if (resultCode == Activity.RESULT_OK) {
-                    // retrieve the claim data from the intent
-                    String claimTitle = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_TITLE);
-                    String claimPlateNumber = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_PLATE_NUMBER);
-                    String claimOccurDate = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_OCCUR_DATE);
-                    String claimDescription = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_DESCRIPTION);
-                    Log.d(InternalProtocol.LOG, "New claim: " + claimTitle + ", " + claimPlateNumber + ", " + claimOccurDate + ", " + claimDescription);
-
-
-                    if (_customer.getPlateList().contains(claimPlateNumber))
-                        _customer.addPlate(claimPlateNumber);
-                    // update the domain data structure
-                    // CORRIGIR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    _customer.addClaim(new ClaimRecord(1, claimTitle, claimPlateNumber, claimOccurDate, claimDescription, "jfd", "", new ArrayList<ClaimMessage>()));
-
+//                    // retrieve the claim data from the intent
+//                    String claimTitle = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_TITLE);
+//                    String claimPlateNumber = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_PLATE_NUMBER);
+//                    String claimOccurDate = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_OCCUR_DATE);
+//                    String claimDescription = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_DESCRIPTION);
+//                    Log.d(InternalProtocol.LOG, "New claim: " + claimTitle + ", " + claimPlateNumber + ", " + claimOccurDate + ", " + claimDescription);
+//
+//
+//                    if (_customer.getPlateList().contains(claimPlateNumber))
+//                        _customer.addPlate(claimPlateNumber);
+//                    // update the domain data structure
+//                    // CORRIGIR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//                    _customer.addClaim(new ClaimRecord(1, claimTitle, claimPlateNumber, claimOccurDate, claimDescription, "jfd", "", new ArrayList<ClaimMessage>()));
+                    Log.d(InternalProtocol.LOG, "Claim submitted.");
                 } else if (resultCode == Activity.RESULT_CANCELED) {
                     Log.d(InternalProtocol.LOG, "Cancel pressed.");
                 } else {

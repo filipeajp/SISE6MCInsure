@@ -60,11 +60,8 @@ public class NewClaimActivity extends AppCompatActivity implements TaskCallBack 
         buttonCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // return the return code only; no intent message is required
                 setResult(Activity.RESULT_CANCELED);
-
                 Toast.makeText(view.getContext(), "Claim submission cancelled", Toast.LENGTH_SHORT).show();
-                // finish activity
                 finish();
             }
         });
