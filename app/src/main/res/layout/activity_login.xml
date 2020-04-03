@@ -55,10 +55,12 @@
         <Button
             android:id="@+id/login_button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginTop="@android:dimen/app_icon_size"
+            android:background="#007bff"
             android:text="@string/login_button"
-            android:textSize="18sp" />
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -66,7 +68,8 @@
             android:layout_marginTop="@android:dimen/app_icon_size"
             android:gravity="center"
             android:text="@string/login_slogan"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold|italic" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

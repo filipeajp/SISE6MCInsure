@@ -15,11 +15,11 @@
     <string name="main_page_my_claims_button">My Claims</string>
 
     <string name="my_information_title">My Information</string>
-    <string name="form_label_name">Name:</string>
-    <string name="form_label_birth">Date of birth:</string>
-    <string name="form_label_address">Address:</string>
-    <string name="form_label_nif">Fiscal Number:</string>
-    <string name="form_label_policy_nr">Insurance Policy:</string>
+    <string name="form_label_name">Name</string>
+    <string name="form_label_birth">Date of birth</string>
+    <string name="form_label_address">Address</string>
+    <string name="form_label_nif">Fiscal Number</string>
+    <string name="form_label_policy_nr">Insurance Policy</string>
     <string name="my_information_back_button">Back</string>
     <string name="my_information_name">(name)</string>
     <string name="my_information_birth">(date of birth)</string>
