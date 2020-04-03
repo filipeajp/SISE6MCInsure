@@ -1,14 +1,21 @@
 package pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.List;
 
+import pt.ulisboa.tecnico.sise.seproject.insure.InternalProtocol;
 import pt.ulisboa.tecnico.sise.seproject.insure.WSHelper;
+import pt.ulisboa.tecnico.sise.seproject.insure.activities.MyClaimsActivity;
+import pt.ulisboa.tecnico.sise.seproject.insure.activities.ReadClaimActivity;
 import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimItem;
 
 public class MyClaimsTask extends AsyncTask<Void, Void, List<ClaimItem>> {
@@ -56,4 +63,6 @@ public class MyClaimsTask extends AsyncTask<Void, Void, List<ClaimItem>> {
         ArrayAdapter<ClaimItem> adpater = new ArrayAdapter<>(_context, android.R.layout.simple_list_item_1, android.R.id.text1, claimList);
         _listView.setAdapter(adpater);
     }
+
+
 }

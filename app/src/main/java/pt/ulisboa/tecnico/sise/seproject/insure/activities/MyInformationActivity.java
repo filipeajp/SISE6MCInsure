@@ -16,6 +16,7 @@ import pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks.MyInformationTask;
 public class MyInformationActivity extends AppCompatActivity {
     private static final String LOG_TAG = "SISE - MyInformation";
 
+    private GlobalState _globalState;
     private TextView textViewName;
     private TextView textViewDateOfBirth;
     private TextView textViewAddress;
@@ -38,7 +39,7 @@ public class MyInformationActivity extends AppCompatActivity {
         textViewNif = findViewById(R.id.my_information_nif);
         textViewPolicyNr = findViewById(R.id.my_information_policy_nr);
 
-        new MyInformationTask(sessionId, textViewName, textViewDateOfBirth, textViewAddress, textViewNif, textViewPolicyNr).execute();
+
 
         buttonBack = findViewById(R.id.my_information_back_button);
 
@@ -51,6 +52,14 @@ public class MyInformationActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        _globalState = (GlobalState) getApplicationContext();
+        int sessionId = _globalState.getCustomer().getSessionId();
+        new MyInformationTask(sessionId, textViewName, textViewDateOfBirth, textViewAddress, textViewNif, textViewPolicyNr).execute();
+    }
+
 }

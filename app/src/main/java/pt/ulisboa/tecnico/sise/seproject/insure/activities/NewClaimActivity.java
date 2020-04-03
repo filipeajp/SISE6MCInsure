@@ -17,6 +17,7 @@ import pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks.TaskCallBack;
 
 public class NewClaimActivity extends AppCompatActivity implements TaskCallBack {
     private static final String LOG_TAG = "SISE - NewClaim";
+    private GlobalState _globalState;
     private Button buttonSubmit;
     private Button buttonCancel;
     private EditText editTextTitle;
@@ -30,7 +31,7 @@ public class NewClaimActivity extends AppCompatActivity implements TaskCallBack 
         setContentView(R.layout.activity_new_claim);
         Log.d(LOG_TAG, "Create claim in process...");
 
-        final GlobalState globalState = (GlobalState) getApplicationContext();
+        _globalState = (GlobalState) getApplicationContext();
 
         buttonSubmit = (Button) findViewById(R.id.new_claim_btn_submit);
         buttonCancel = (Button) findViewById(R.id.new_claim_btn_cancel);
@@ -52,7 +53,7 @@ public class NewClaimActivity extends AppCompatActivity implements TaskCallBack 
                 String claimOccurDate = editTextOccurrenceDate.getText().toString();
                 String claimDesc = editTextDesc.getText().toString();
 
-                new NewClaimTask(view.getContext(), globalState.getCustomer().getSessionId(), claimTitle, claimOccurDate, claimPlateNumber, claimDesc).execute();
+                new NewClaimTask(view.getContext(), _globalState.getCustomer().getSessionId(), claimTitle, claimOccurDate, claimPlateNumber, claimDesc).execute();
             }
         });
 

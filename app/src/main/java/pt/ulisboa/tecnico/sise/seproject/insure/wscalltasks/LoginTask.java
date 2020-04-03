@@ -52,7 +52,7 @@ public class LoginTask extends AsyncTask<Void, Void, Integer> {
             Intent intent = new Intent(this.context, MainPageActivity.class);
             intent.putExtra("USERNAME", _globalState.getCustomer().getName());
             context.startActivity(intent);
-            ((TaskCallBack) context).done();
+           ((TaskCallBack) context).done();
         }
     }
 }

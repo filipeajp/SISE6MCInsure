@@ -17,6 +17,13 @@ public class ReadClaimActivity extends AppCompatActivity {
     private static final String LOG_TAG = "SISE - ReadClaims";
     private Button buttonBack;
 
+    private GlobalState _globalState;
+    TextView claimTitleView ;
+    TextView claimPlateNumberView;
+    TextView claimOccurDateView;
+    TextView claimDescriptionView;
+    TextView claimStatusView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,17 +48,24 @@ public class ReadClaimActivity extends AppCompatActivity {
         Log.d(InternalProtocol.LOG, "Index: " + index);
 
         //obtain a reference to the claim's data structure
-        GlobalState context = (GlobalState) getApplicationContext();
-        ClaimRecord claim = context.getCustomer().getClaimRecordList().get(index);
+        _globalState = (GlobalState) getApplicationContext();
+        ClaimRecord claim = _globalState.getCustomer().getClaimRecordList().get(index);
+        //int sessionId = _globalState.getCustomer().getSessionId();
 
         // update the UI
-        TextView claimTitleView = findViewById(R.id.read_claim_title);
+        claimTitleView = findViewById(R.id.read_claim_title);
+        claimPlateNumberView = findViewById(R.id.read_claim_plate_number);
+        claimOccurDateView = findViewById(R.id.read_claim_date);
+        claimDescriptionView = findViewById(R.id.read_claim_description);
+        claimStatusView = findViewById(R.id.read_claim_status);
+
         claimTitleView.setText(claim.getTitle());
-        TextView claimPlateNumberView = findViewById(R.id.read_claim_plate_number);
         claimPlateNumberView.setText(claim.getPlate());
-        TextView claimOccurDateView = findViewById(R.id.read_claim_date);
         claimOccurDateView.setText(claim.getOccurrenceDate());
-        TextView claimDescriptionView = findViewById(R.id.read_claim_description);
         claimDescriptionView.setText(claim.getDescription());
+        claimStatusView.setText(claim.getStatus());
+
     }
+
+
 }

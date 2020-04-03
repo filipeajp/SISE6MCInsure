@@ -1,6 +1,7 @@
 package pt.ulisboa.tecnico.sise.seproject.insure.activities;
 
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,8 +28,6 @@ public class LoginActivity extends AppCompatActivity implements TaskCallBack {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        final GlobalState globalState = (GlobalState) getApplicationContext();
-
         buttonLogin = findViewById(R.id.login_button);
         editTextUsername = findViewById(R.id.login_user_name);
         editTextPassword = findViewById(R.id.login_user_password);
@@ -40,7 +39,7 @@ public class LoginActivity extends AppCompatActivity implements TaskCallBack {
                 _password = editTextPassword.getText().toString();
 
                 Log.d("sise", _username + " " + _password);
-                new LoginTask(_username, _password, globalState, view.getContext()).execute();
+                new LoginTask(_username, _password, (GlobalState) getApplicationContext(), view.getContext()).execute();
 
             }
         });
