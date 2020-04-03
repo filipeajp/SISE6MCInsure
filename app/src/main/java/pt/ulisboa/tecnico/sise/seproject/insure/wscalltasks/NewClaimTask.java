@@ -1,14 +1,13 @@
 package pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-import pt.ulisboa.tecnico.sise.seproject.insure.InternalProtocol;
 import pt.ulisboa.tecnico.sise.seproject.insure.WSHelper;
+import pt.ulisboa.tecnico.sise.seproject.insure.activities.MainPageActivity;
 
 public class NewClaimTask extends AsyncTask<Void, Void, String> {
     private static final String TAG = "Insure";
@@ -55,14 +54,11 @@ public class NewClaimTask extends AsyncTask<Void, Void, String> {
             }
 
             //return an intent containing the title and body of the new note
-            Intent resultIntent = new Intent();
+            Intent resultIntent = new Intent(_context, MainPageActivity.class);
 
-            resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_TITLE, _title);
-            resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_PLATE_NUMBER, _plateNumber);
-            resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_OCCUR_DATE, _occurDate);
-            resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_DESCRIPTION, _description);
 
-            ((Activity) _context).setResult(Activity.RESULT_OK, resultIntent);
+            //((Activity) _context).setResult(Activity.RESULT_OK, resultIntent);
+            _context.startActivity(resultIntent);
 
             Toast.makeText(_context, "Claim submitted", Toast.LENGTH_LONG).show();
             ((TaskCallBack) _context).done();

@@ -1,10 +1,8 @@
 package pt.ulisboa.tecnico.sise.seproject.insure.activities;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -30,6 +28,7 @@ public class MainPageActivity extends AppCompatActivity implements TaskCallBack 
     private Button buttonMyInformation;
     private Button buttonNewClaim;
     private Button buttonMyClaims;
+    private GlobalState _globalState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +38,8 @@ public class MainPageActivity extends AppCompatActivity implements TaskCallBack 
 
         // place the claim list in the application domain
         _claimList = new ArrayList<>();
-        final GlobalState globalState = (GlobalState) getApplicationContext();
-        _customer = globalState.getCustomer();
+        _globalState = (GlobalState) getApplicationContext();
+        _customer = _globalState.getCustomer();
 
         buttonLogout = findViewById(R.id.main_page_logout_button);
         //Log.d("Insure", "" + globalState.getCustomer().getSessionId());
@@ -59,7 +58,7 @@ public class MainPageActivity extends AppCompatActivity implements TaskCallBack 
             @Override
             public void onClick(View view) {
 
-                new LogoutTask(globalState, view.getContext()).execute();
+                new LogoutTask(_globalState, view.getContext()).execute();
             }
         });
 
@@ -92,38 +91,6 @@ public class MainPageActivity extends AppCompatActivity implements TaskCallBack 
     @Override
     public void done() {
         finish();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        switch (requestCode) {
-            case InternalProtocol.NEW_ClAIM_REQUEST:
-
-                if (resultCode == Activity.RESULT_OK) {
-//                    // retrieve the claim data from the intent
-//                    String claimTitle = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_TITLE);
-//                    String claimPlateNumber = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_PLATE_NUMBER);
-//                    String claimOccurDate = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_OCCUR_DATE);
-//                    String claimDescription = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_DESCRIPTION);
-//                    Log.d(InternalProtocol.LOG, "New claim: " + claimTitle + ", " + claimPlateNumber + ", " + claimOccurDate + ", " + claimDescription);
-//
-//
-//                    if (_customer.getPlateList().contains(claimPlateNumber))
-//                        _customer.addPlate(claimPlateNumber);
-//                    // update the domain data structure
-//                    // CORRIGIR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//                    _customer.addClaim(new ClaimRecord(1, claimTitle, claimPlateNumber, claimOccurDate, claimDescription, "jfd", "", new ArrayList<ClaimMessage>()));
-                    Log.d(InternalProtocol.LOG, "Claim submitted.");
-                } else if (resultCode == Activity.RESULT_CANCELED) {
-                    Log.d(InternalProtocol.LOG, "Cancel pressed.");
-                } else {
-                    Log.d(InternalProtocol.LOG, "Internal error: unknown result code.");
-                }
-                break;
-            default:
-                Log.d(InternalProtocol.LOG, "Internal error: unknown intent message.");
-        }
     }
 
 

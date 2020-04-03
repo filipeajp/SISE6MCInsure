@@ -18,6 +18,7 @@ public class LoginTask extends AsyncTask<Void, Void, Integer> {
     private String _password;
     private Context context;
     private int _sessionId = -1;
+    private Customer _customer;
 
     public LoginTask(String username, String password, GlobalState globalState, Context context) {
         this._username = username;
@@ -31,8 +32,7 @@ public class LoginTask extends AsyncTask<Void, Void, Integer> {
         try {
             _sessionId = WSHelper.login(_username, _password);        // username doesn't exist
             Log.d(TAG, "Login result => " + _sessionId);
-            Customer c = WSHelper.getCustomerInfo(_sessionId);
-            _globalState.set_customer(c);
+            _customer = WSHelper.getCustomerInfo(_sessionId);
         } catch (Exception e) {
             Log.d(TAG, e.toString());
         }
@@ -45,6 +45,7 @@ public class LoginTask extends AsyncTask<Void, Void, Integer> {
 
     protected void onPostExecute(Integer result) {
         Log.d(TAG, "result => " + result);
+        _globalState.set_customer(_customer);
         _globalState.getCustomer().setSessionId((result));
         if (result <= 0) {
             Toast.makeText(context, "Login failed! Username or password incorrect.", Toast.LENGTH_SHORT).show();
@@ -52,7 +53,7 @@ public class LoginTask extends AsyncTask<Void, Void, Integer> {
             Intent intent = new Intent(this.context, MainPageActivity.class);
             intent.putExtra("USERNAME", _globalState.getCustomer().getName());
             context.startActivity(intent);
-           ((TaskCallBack) context).done();
+            ((TaskCallBack) context).done();
         }
     }
 }

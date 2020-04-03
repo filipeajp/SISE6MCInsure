@@ -40,7 +40,6 @@ public class MyInformationActivity extends AppCompatActivity {
         textViewPolicyNr = findViewById(R.id.my_information_policy_nr);
 
 
-
         buttonBack = findViewById(R.id.my_information_back_button);
 
         buttonBack.setOnClickListener(new View.OnClickListener() {
@@ -49,16 +48,16 @@ public class MyInformationActivity extends AppCompatActivity {
                 Log.d(LOG_TAG, "My information back button is working");
                 Intent intentMyInformation = new Intent(MyInformationActivity.this, MainPageActivity.class);
                 startActivity(intentMyInformation);
-                finish();
+                //finish();
             }
         });
     }
 
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
-        _globalState = (GlobalState) getApplicationContext();
-        int sessionId = _globalState.getCustomer().getSessionId();
+        GlobalState globalState = (GlobalState) getApplicationContext();
+        int sessionId = globalState.getCustomer().getSessionId();
         new MyInformationTask(sessionId, textViewName, textViewDateOfBirth, textViewAddress, textViewNif, textViewPolicyNr).execute();
     }
 

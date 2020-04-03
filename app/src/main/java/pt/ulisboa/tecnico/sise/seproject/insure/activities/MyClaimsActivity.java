@@ -17,7 +17,6 @@ import pt.ulisboa.tecnico.sise.seproject.insure.R;
 import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimRecord;
 import pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks.MyClaimsTask;
 import pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks.ReadClaimTask;
-import pt.ulisboa.tecnico.sise.seproject.insure.wscalltasks.ReadClaimTask;
 
 public class MyClaimsActivity extends AppCompatActivity {
 
@@ -40,14 +39,13 @@ public class MyClaimsActivity extends AppCompatActivity {
         _listView = (ListView) findViewById(R.id.my_claims_list);
 
 
-
         // attach click listener to list view items
         _listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 //new ReadClaimTask(sessionId, index+1, claimTitleView, claimOccurDateView, claimPlateNumberView, claimDescriptionView, claimStatusView ).execute();
-                new ReadClaimTask(_globalState.getCustomer().getSessionId(), position+1, view.getContext()).execute();
+                new ReadClaimTask(_globalState.getCustomer().getSessionId(), position + 1, view.getContext()).execute();
                 // create the read claim activity, passing to it the index position as parameter
                 Log.d("position", position + "");
 
@@ -67,7 +65,7 @@ public class MyClaimsActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
 
         _globalState = (GlobalState) getApplicationContext();

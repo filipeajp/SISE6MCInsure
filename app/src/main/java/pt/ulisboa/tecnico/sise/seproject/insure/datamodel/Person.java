@@ -20,10 +20,13 @@ public class Person implements Serializable {
     }
 
     public Person(Person p) {
-        _name = p.getName();
-        _fiscalNumber = p.getFiscalNumber();
-        _address = p.getAddress();
-        _dateOfBirth = p.getDateOfBirth();
+        if (p != null) {
+            _name = p.getName();
+            _fiscalNumber = p.getFiscalNumber();
+            _address = p.getAddress();
+            _dateOfBirth = p.getDateOfBirth();
+        }
+
     }
 
 
