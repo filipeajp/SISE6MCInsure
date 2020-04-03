@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="@android:dimen/app_icon_size"
-            android:background="#007bff"
+            android:background="@color/colorPrimary"
             android:text="@string/login_button"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
