@@ -12,9 +12,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
+        android:background="@android:color/holo_red_light"
         android:drawableLeft="@android:drawable/ic_lock_power_off"
         android:drawablePadding="10dp"
+        android:padding="10dp"
         android:text="@string/main_page_logout_button"
+        android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -59,27 +62,33 @@
             android:layout_width="250dp"
             android:layout_height="70dp"
             android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary"
             android:text="@string/main_page_my_information_button"
             android:textAllCaps="false"
-            android:textSize="24sp" />
+            android:textColor="@android:color/white"
+            android:textSize="22sp" />
 
         <Button
             android:id="@+id/main_page_new_claim_button"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary"
             android:text="@string/main_page_new_claim_button"
             android:textAllCaps="false"
-            android:textSize="24sp" />
+            android:textColor="@android:color/white"
+            android:textSize="22sp" />
 
         <Button
             android:id="@+id/main_page_my_claims_button"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary"
             android:text="@string/main_page_my_claims_button"
             android:textAllCaps="false"
-            android:textSize="24sp" />
+            android:textColor="@android:color/white"
+            android:textSize="22sp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

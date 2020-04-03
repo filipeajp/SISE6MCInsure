@@ -13,9 +13,12 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
+        android:background="@color/colorPrimaryDark"
         android:drawableLeft="@android:drawable/ic_menu_revert"
         android:drawablePadding="10dp"
+        android:padding="10dp"
         android:text="@string/my_information_back_button"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -47,6 +50,7 @@
             android:layout_marginBottom="65dp"
             android:gravity="center"
             android:text="@string/my_information_title"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="32sp"
             android:textStyle="bold" />
 
@@ -67,6 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/form_label_name"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
@@ -92,6 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/form_label_birth"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -116,6 +122,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/form_label_address"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -140,6 +147,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/form_label_nif"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -164,6 +172,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/form_label_policy_nr"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
