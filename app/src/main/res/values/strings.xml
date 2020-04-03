@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">InSure</string>
+    <string name="app_logo_description">Insure logo</string>
 
-    <string name="login_slogan">InSure keeps going\nso your travels do not stop!</string>
+    <string name="login_slogan">We keep going\nso your travels do not stop!</string>
     <string name="login_user_name">Username</string>
     <string name="login_user_password">Password</string>
     <string name="login_button">Login</string>

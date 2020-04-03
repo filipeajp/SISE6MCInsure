@@ -17,20 +17,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+        <ImageView
+            android:id="@+id/imageViewMyInformation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@android:dimen/app_icon_size"
-            android:text="@string/app_name"
-            android:textSize="30sp" />
+            android:contentDescription="@string/app_logo_description"
+            android:scaleType="fitXY"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            android:src="@drawable/logo_blue" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@android:dimen/app_icon_size"
+            android:layout_marginBottom="65dp"
             android:gravity="center"
             android:text="@string/my_information_title"
-            android:textSize="18sp"
+            android:textSize="32sp"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -50,6 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/form_label_name"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -58,13 +62,15 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="end"
-                    android:text="@string/my_information_name" />
+                    android:text="@string/my_information_name"
+                    android:textSize="22sp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -72,6 +78,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/form_label_birth"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -80,12 +87,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="end"
-                    android:text="@string/my_information_birth" />
+                    android:text="@string/my_information_birth"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -93,6 +102,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/form_label_address"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -101,12 +111,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="end"
-                    android:text="@string/my_information_address" />
+                    android:text="@string/my_information_address"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -114,6 +126,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/form_label_nif"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -122,12 +135,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="end"
-                    android:text="@string/my_information_nif" />
+                    android:text="@string/my_information_nif"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -135,6 +150,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/form_label_policy_nr"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -143,7 +159,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="end"
-                    android:text="@string/my_information_policy_nr" />
+                    android:text="@string/my_information_policy_nr"
+                    android:textSize="20sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -154,7 +171,12 @@
         android:id="@+id/my_information_back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:drawableLeft="@android:drawable/ic_menu_revert"
+        android:drawablePadding="10dp"
         android:text="@string/my_information_back_button"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

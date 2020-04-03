@@ -10,7 +10,12 @@
         android:id="@+id/main_page_logout_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:drawableLeft="@android:drawable/ic_lock_power_off"
+        android:drawablePadding="10dp"
         android:text="@string/main_page_logout_button"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,51 +29,57 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+        <ImageView
+            android:id="@+id/imageViewMainPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textSize="30sp" />
+            android:contentDescription="@string/app_logo_description"
+            android:scaleType="fitXY"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            android:src="@drawable/logo_blue" />
 
         <TextView
             android:id="@+id/main_page_hello_message"
             android:layout_width="match_parent"
             android:layout_height="37dp"
-            android:layout_marginTop="@android:dimen/app_icon_size"
             android:gravity="center"
             android:text="@string/main_page_hello_message"
-            android:textSize="12sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="37dp"
             android:gravity="center"
             android:text="@string/main_page_need_message"
-            android:textSize="12sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/main_page_my_information_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@android:dimen/app_icon_size"
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="20dp"
             android:text="@string/main_page_my_information_button"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/main_page_new_claim_button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@android:dimen/app_icon_size"
+            android:layout_height="70dp"
+            android:layout_marginTop="20dp"
             android:text="@string/main_page_new_claim_button"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/main_page_my_claims_button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@android:dimen/app_icon_size"
+            android:layout_height="70dp"
+            android:layout_marginTop="20dp"
             android:text="@string/main_page_my_claims_button"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textSize="24sp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
