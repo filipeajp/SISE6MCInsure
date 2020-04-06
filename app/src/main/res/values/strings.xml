@@ -28,7 +28,6 @@
     <string name="my_information_policy_nr">(policy nr)</string>
 
     <string name="new_claim_activity_title">New Claim</string>
-    <string name="new_claim_action_message">Submit here your claim</string>
     <string name="new_claim_claim_title">Title</string>
     <string name="new_claim_plate_number">Plate Number</string>
     <string name="new_claim_occurrence_date">Occurrence Date</string>

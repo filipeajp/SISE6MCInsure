@@ -16,19 +16,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
-            android:text="@string/new_claim_activity_title"
-            android:textSize="30sp" />
+        <ImageView
+            android:id="@+id/imageViewLogin"
+            android:layout_width="40dp"
+            android:layout_height="45dp"
+            android:layout_marginBottom="10dp"
+            android:contentDescription="@string/app_logo_description"
+            android:scaleType="fitXY"
+            android:scaleX="1"
+            android:scaleY="1"
+            android:src="@drawable/logo_blue" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="@string/new_claim_action_message"
-            android:textColor="#000000" />
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:text="@string/new_claim_activity_title"
+            android:textSize="30sp" />
 
         <EditText
             android:id="@+id/new_claim_claim_title"
@@ -80,18 +85,24 @@
             <Button
                 android:id="@+id/new_claim_btn_cancel"
                 style="buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="3dp"
                 android:layout_weight="1"
-                android:text="@string/new_claim_btn_cancel" />
+                android:background="@color/colorPrimary"
+                android:text="@string/new_claim_btn_cancel"
+                android:textColor="@android:color/white" />
 
             <Button
                 android:id="@+id/new_claim_btn_submit"
                 style="buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="3dp"
                 android:layout_weight="1"
-                android:text="@string/new_claim_btn_submit" />
+                android:background="@color/colorPrimary"
+                android:text="@string/new_claim_btn_submit"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
     </LinearLayout>
