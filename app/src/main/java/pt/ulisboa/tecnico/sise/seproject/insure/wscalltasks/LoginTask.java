@@ -45,6 +45,7 @@ public class LoginTask extends AsyncTask<Void, Void, Integer> {
 
     protected void onPostExecute(Integer result) {
         Log.d(TAG, "result => " + result);
+        _globalState.setSessionId(result);
         _globalState.set_customer(_customer);
         _globalState.getCustomer().setSessionId((result));
         if (result <= 0) {

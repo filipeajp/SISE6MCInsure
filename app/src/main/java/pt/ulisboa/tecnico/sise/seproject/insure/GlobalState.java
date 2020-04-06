@@ -1,6 +1,7 @@
 package pt.ulisboa.tecnico.sise.seproject.insure;
 
 import android.app.Application;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -8,8 +9,8 @@ import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimRecord;
 import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.Customer;
 
 public class GlobalState extends Application {
+    private static int _sessionId = -1;
     private ArrayList<ClaimRecord> _claimList;
-    private int _sessionId;
     private Customer _customer;
 
     public Customer getCustomer() {
@@ -20,7 +21,7 @@ public class GlobalState extends Application {
         this._customer = customer;
     }
 
-//    public ArrayList<ClaimRecord> getClaimList() {
+    //    public ArrayList<ClaimRecord> getClaimList() {
 //        return _claimList;
 //    }
 //
@@ -28,11 +29,14 @@ public class GlobalState extends Application {
 //        _claimList = claimList;
 //    }
 //
-//    public int getSessionId() {
-//        return _sessionId;
-//    }
-//
-//    public void setSessionId(int sessionId) {
-//        _sessionId = sessionId;
-//    }
+    public int getSessionId() {
+        Log.d("My", "getSessionID" + _sessionId);
+        return _sessionId;
+    }
+
+    public void setSessionId(int sessionId) {
+        Log.d("My", "setSessionID-before" + _sessionId);
+        _sessionId = sessionId;
+        Log.d("My", "setSessionID-after" + _sessionId);
+    }
 }

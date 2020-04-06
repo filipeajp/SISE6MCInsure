@@ -14,4 +14,10 @@ public class InternalProtocol {
 
     // relevant for the read note activity
     public static final String READ_CLAIM_INDEX = "CLAIM_INDEX";
+    public static final String READ_CLAIM_ID = "CLAIM_ID";
+    public static final String READ_CLAIM_TITLE = "CLAIM_TITLE";
+    public static final String READ_CLAIM_PLATE_NUMBER = "CLAIM_PLATE_NUMBER";
+    public static final String READ_CLAIM_OCCUR_DATE = "CLAIM_OCCUR_DATE";
+    public static final String READ_CLAIM_DESCRIPTION = "CLAIM_DESCRIPTION";
+    public static final String READ_CLAIM_STATUS = "CLAIM_STATUS";
 }

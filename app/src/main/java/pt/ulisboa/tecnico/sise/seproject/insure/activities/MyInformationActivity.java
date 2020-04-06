@@ -1,6 +1,5 @@
 package pt.ulisboa.tecnico.sise.seproject.insure.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,9 +29,6 @@ public class MyInformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_information);
 
-        GlobalState globalState = (GlobalState) getApplicationContext();
-        int sessionId = globalState.getCustomer().getSessionId();
-
         textViewName = findViewById(R.id.my_information_name);
         textViewDateOfBirth = findViewById(R.id.my_information_birth);
         textViewAddress = findViewById(R.id.my_information_address);
@@ -46,8 +42,8 @@ public class MyInformationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d(LOG_TAG, "My information back button is working");
-                Intent intentMyInformation = new Intent(MyInformationActivity.this, MainPageActivity.class);
-                startActivity(intentMyInformation);
+                //Intent intentMyInformation = new Intent(MyInformationActivity.this, MainPageActivity.class);
+                //startActivity(intentMyInformation);
                 finish();
             }
         });
@@ -56,8 +52,9 @@ public class MyInformationActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        GlobalState globalState = (GlobalState) getApplicationContext();
-        int sessionId = globalState.getCustomer().getSessionId();
+        _globalState = (GlobalState) getApplicationContext();
+        Log.d("My", "Myinfo activity - calling global state session id: " + _globalState.getSessionId());
+        int sessionId = _globalState.getSessionId();
         new MyInformationTask(sessionId, textViewName, textViewDateOfBirth, textViewAddress, textViewNif, textViewPolicyNr).execute();
     }
 

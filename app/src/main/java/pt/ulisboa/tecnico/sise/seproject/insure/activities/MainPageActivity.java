@@ -1,6 +1,7 @@
 package pt.ulisboa.tecnico.sise.seproject.insure.activities;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +10,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
@@ -29,6 +29,7 @@ public class MainPageActivity extends AppCompatActivity implements TaskCallBack 
     private Button buttonNewClaim;
     private Button buttonMyClaims;
     private GlobalState _globalState;
+    private Context _context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +38,7 @@ public class MainPageActivity extends AppCompatActivity implements TaskCallBack 
 
 
         // place the claim list in the application domain
-        _claimList = new ArrayList<>();
         _globalState = (GlobalState) getApplicationContext();
-        _customer = _globalState.getCustomer();
 
         buttonLogout = findViewById(R.id.main_page_logout_button);
         //Log.d("Insure", "" + globalState.getCustomer().getSessionId());
@@ -57,8 +56,7 @@ public class MainPageActivity extends AppCompatActivity implements TaskCallBack 
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                new LogoutTask(_globalState, view.getContext()).execute();
+                new LogoutTask(_globalState, _context).execute();
             }
         });
 
@@ -85,7 +83,6 @@ public class MainPageActivity extends AppCompatActivity implements TaskCallBack 
                 startActivity(intent);
             }
         });
-
     }
 
     @Override

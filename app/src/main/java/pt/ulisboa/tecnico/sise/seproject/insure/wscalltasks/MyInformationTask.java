@@ -31,7 +31,7 @@ public class MyInformationTask extends AsyncTask<Void, Void, Customer> {
 
     @Override
     protected Customer doInBackground(Void... voids) {
-
+        Log.d(TAG, "SessionID:" + _sessionId);
         try {
             return WSHelper.getCustomerInfo(_sessionId);
         } catch (Exception e) {

@@ -8,9 +8,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import pt.ulisboa.tecnico.sise.seproject.insure.InternalProtocol;
-import pt.ulisboa.tecnico.sise.seproject.insure.R;
 import pt.ulisboa.tecnico.sise.seproject.insure.WSHelper;
-import pt.ulisboa.tecnico.sise.seproject.insure.activities.MyClaimsActivity;
 import pt.ulisboa.tecnico.sise.seproject.insure.activities.ReadClaimActivity;
 import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimRecord;
 
@@ -26,18 +24,8 @@ public class ReadClaimTask extends AsyncTask<Void, Void, ClaimRecord> {
     private TextView _claimStatusView;
     private ClaimRecord _claim;
 
-//    public ReadClaimTask(int sessionId, int index, TextView claimTitleView, TextView claimOccurDateView, TextView claimPlateNumberView, TextView claimDescriptionView, TextView claimStatusView) {
-//
-//        this._sessionId = sessionId;
-//        this._index = index;
-//        this._claimTitleView = claimTitleView;
-//        this._claimOccurDateView = claimOccurDateView;
-//        this._claimPlateNumberView = claimPlateNumberView;
-//        this._claimDescriptionView = claimDescriptionView;
-//        this._claimStatusView = claimStatusView;
-//    }
 
-    public ReadClaimTask(int sessionId, int claimId, Context context){
+    public ReadClaimTask(int sessionId, int claimId, Context context) {
         this._sessionId = sessionId;
         this._claimId = claimId;
         this._context = context;
@@ -59,16 +47,18 @@ public class ReadClaimTask extends AsyncTask<Void, Void, ClaimRecord> {
     }
 
     @Override
-    protected void onProgressUpdate(Void... params){
+    protected void onProgressUpdate(Void... params) {
     }
 
     @Override
     protected void onPostExecute(ClaimRecord claim) {
         Intent intent = new Intent(_context, ReadClaimActivity.class);
-        intent.putExtra(InternalProtocol.READ_CLAIM_INDEX, claim.getTitle());
-        intent.putExtra(InternalProtocol.READ_CLAIM_INDEX, claim.getOccurrenceDate());
-        intent.putExtra(InternalProtocol.READ_CLAIM_INDEX, claim.getPlate());
-        intent.putExtra(InternalProtocol.READ_CLAIM_INDEX, claim.getStatus());
+        intent.putExtra(InternalProtocol.READ_CLAIM_TITLE, claim.getTitle());
+        intent.putExtra(InternalProtocol.READ_CLAIM_ID, "" + claim.getId());
+        intent.putExtra(InternalProtocol.READ_CLAIM_OCCUR_DATE, claim.getOccurrenceDate());
+        intent.putExtra(InternalProtocol.READ_CLAIM_PLATE_NUMBER, claim.getPlate());
+        intent.putExtra(InternalProtocol.READ_CLAIM_STATUS, claim.getStatus());
+        intent.putExtra(InternalProtocol.READ_CLAIM_DESCRIPTION, claim.getDescription());
         _context.startActivity(intent);
     }
 }

@@ -6,16 +6,16 @@ import java.util.List;
 
 public class ClaimRecord extends ClaimItem implements Serializable {
 
+    //    private final List<ClaimMessage> _claimMessageList;
+    public static final String STATUS_PENDING = "pending";    //could be done with enum watching for exceptions
+    public static final String STATUS_ACCEPTED = "accepted";    //could be done with enum watching for exceptions
+    public static final String STATUS_DENIED = "denied";        //could be done with enum watching for exceptions
     private static final long serialVersionUID = 8410169428857128982L;
     private final String _submissionDate;
     private final String _occurrenceDate;
     private final String _plate;
     private final String _description;
     private String _status;
-    //    private final List<ClaimMessage> _claimMessageList;
-    public static final String STATUS_PENDING 	= "pending";	//could be done with enum watching for exceptions
-    public static final String STATUS_ACCEPTED 	= "accepted";	//could be done with enum watching for exceptions
-    public static final String STATUS_DENIED 	= "denied";		//could be done with enum watching for exceptions
 
     public ClaimRecord(int claimId, String claimTitle, String submissionDate, String occurrenceDate, String plate,
                        String description, String status, List<ClaimMessage> msgList) {
@@ -53,7 +53,7 @@ public class ClaimRecord extends ClaimItem implements Serializable {
     }
 
     public boolean setStatus(String status) {
-        if(status.equals(ClaimRecord.STATUS_PENDING) || status.equals(ClaimRecord.STATUS_ACCEPTED) || status.equals(ClaimRecord.STATUS_DENIED)) {
+        if (status.equals(ClaimRecord.STATUS_PENDING) || status.equals(ClaimRecord.STATUS_ACCEPTED) || status.equals(ClaimRecord.STATUS_DENIED)) {
             _status = status;
             return true;
         }
@@ -78,7 +78,7 @@ public class ClaimRecord extends ClaimItem implements Serializable {
 
     @Override
     public String toString() {
-        return  super.toString() + ", " +
+        return super.toString() + ", " +
                 "Submission Date: " + _submissionDate + ", " +
                 "Occurrence Date: " + _occurrenceDate + ", " +
                 "Number Plate: " + _plate + ", " +
