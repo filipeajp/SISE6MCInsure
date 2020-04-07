@@ -7,9 +7,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
-import pt.ulisboa.tecnico.sise.seproject.insure.WSHelper;
 import pt.ulisboa.tecnico.sise.seproject.insure.activities.MainPageActivity;
 import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.Customer;
+import pt.ulisboa.tecnico.sise.seproject.insure.helpers.WSHelper;
 
 public class LoginTask extends AsyncTask<Void, Void, Integer> {
     public final static String TAG = "LoginCallTask";

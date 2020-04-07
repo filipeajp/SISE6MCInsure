@@ -5,7 +5,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-import pt.ulisboa.tecnico.sise.seproject.insure.WSHelper;
+import pt.ulisboa.tecnico.sise.seproject.insure.helpers.WSHelper;
 
 public class NewClaimTask extends AsyncTask<Void, Void, Boolean> {
     private static final String TAG = "Insure";

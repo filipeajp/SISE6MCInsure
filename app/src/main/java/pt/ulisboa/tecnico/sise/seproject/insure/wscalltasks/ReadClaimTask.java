@@ -8,9 +8,9 @@ import android.util.Log;
 import android.widget.TextView;
 
 import pt.ulisboa.tecnico.sise.seproject.insure.InternalProtocol;
-import pt.ulisboa.tecnico.sise.seproject.insure.WSHelper;
 import pt.ulisboa.tecnico.sise.seproject.insure.activities.ReadClaimActivity;
 import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimRecord;
+import pt.ulisboa.tecnico.sise.seproject.insure.helpers.WSHelper;
 
 public class ReadClaimTask extends AsyncTask<Void, Void, ClaimRecord> {
     private static final String TAG = "ReadClaimTask";

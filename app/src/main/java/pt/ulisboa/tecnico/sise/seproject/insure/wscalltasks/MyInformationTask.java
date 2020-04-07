@@ -4,8 +4,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
 
-import pt.ulisboa.tecnico.sise.seproject.insure.WSHelper;
 import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.Customer;
+import pt.ulisboa.tecnico.sise.seproject.insure.helpers.WSHelper;
 
 public class MyInformationTask extends AsyncTask<Void, Void, Customer> {
 
