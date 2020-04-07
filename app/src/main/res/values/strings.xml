@@ -29,8 +29,8 @@
 
     <string name="new_claim_activity_title">New Claim</string>
     <string name="new_claim_claim_title">Title</string>
-    <string name="new_claim_plate_number">Plate Number</string>
-    <string name="new_claim_occurrence_date">Occurrence Date</string>
+    <string name="new_claim_plate_number">Select plate number</string>
+    <string name="new_claim_occurrence_date">Select occurrence date</string>
     <string name="new_claim_description">Description</string>
     <string name="new_claim_btn_submit">Submit</string>
     <string name="new_claim_btn_cancel">Cancel</string>

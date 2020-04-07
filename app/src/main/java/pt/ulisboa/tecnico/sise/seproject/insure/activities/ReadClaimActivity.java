@@ -1,5 +1,6 @@
 package pt.ulisboa.tecnico.sise.seproject.insure.activities;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -76,7 +77,15 @@ public class ReadClaimActivity extends AppCompatActivity {
         claimPlateNumberView.setText(plateNumber);
         claimOccurDateView.setText(occurrenceDate);
         claimDescriptionView.setText(description);
+        
         claimStatusView.setText(status);
+        if(status.equals("denied")) {
+            claimStatusView.setTextColor(Color.RED);
+        } else if(status.equals("accepted")) {
+            claimStatusView.setTextColor(Color.GREEN);
+        } else {
+            claimStatusView.setTextColor(getResources().getColor(R.color.colorPrimary));
+        }
     }
 
 }

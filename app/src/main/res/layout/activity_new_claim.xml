@@ -47,15 +47,24 @@
             android:hint="@string/new_claim_claim_title"
             android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/new_claim_plate_number"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:autofillHints="@string/new_claim_plate_number"
-            android:ems="10"
-            android:hint="@string/new_claim_plate_number"
-            android:inputType="text" />
+            android:text="@string/new_claim_plate_number" />
+
+        <Spinner
+            android:id="@+id/new_claim_plate_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="5dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/new_claim_occurrence_date" />
 
         <EditText
             android:id="@+id/new_claim_occurrence_date"
@@ -70,7 +79,7 @@
         <EditText
             android:id="@+id/new_claim_description"
             android:layout_width="match_parent"
-            android:layout_height="173dp"
+            android:layout_height="150dp"
             android:layout_marginBottom="10dp"
             android:autofillHints="@string/new_claim_description"
             android:ems="10"
