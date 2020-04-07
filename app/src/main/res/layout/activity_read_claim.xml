@@ -60,6 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:gravity="end"
                 android:text="@string/read_claim_id"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -85,6 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:gravity="end"
                 android:text="@string/read_claim_date"
                 android:textSize="18sp" />
 
@@ -111,6 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:gravity="end"
                 android:text="@string/read_claim_title"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -136,6 +139,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:gravity="end"
                 android:text="@string/read_claim_plate_number"
                 android:textSize="18sp" />
 
@@ -189,6 +193,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:gravity="end"
                 android:text="@string/read_claim_status"
                 android:textSize="22sp"
                 android:textStyle="bold" />
