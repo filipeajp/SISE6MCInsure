@@ -61,20 +61,15 @@
             android:layout_marginBottom="5dp" />
 
         <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/new_claim_occurrence_date" />
-
-        <EditText
             android:id="@+id/new_claim_occurrence_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:autofillHints="@string/new_claim_occurrence_date"
-            android:ems="10"
-            android:hint="@string/new_claim_occurrence_date"
-            android:inputType="date" />
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/new_claim_occurrence_date"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/new_claim_description"
