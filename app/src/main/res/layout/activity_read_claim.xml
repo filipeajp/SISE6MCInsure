@@ -18,22 +18,26 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.518">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/app_name"
-            android:textSize="30sp" />
+        <ImageView
+            android:id="@+id/imageViewLogin"
+            android:layout_width="40dp"
+            android:layout_height="45dp"
+            android:layout_marginBottom="10dp"
+            android:contentDescription="@string/app_logo_description"
+            android:scaleType="fitXY"
+            android:scaleX="1"
+            android:scaleY="1"
+            android:src="@drawable/logo_blue" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:text="@string/read_claim"
-            android:textColor="#000000"
-            android:textSize="18sp" />
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@string/read_details"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,14 +50,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/read_id" />
+                android:text="@string/read_id"
+                android:textColor="@android:color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/read_claim_id"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/read_claim_id" />
+                android:text="@string/read_claim_id"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -67,14 +75,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/read_claim_issuing_date" />
+                android:text="@string/read_claim_issuing_date"
+                android:textColor="@android:color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/read_claim_date"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/read_claim_date" />
+                android:text="@string/read_claim_date"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -89,14 +101,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/claim_title" />
+                android:text="@string/claim_title"
+                android:textColor="@android:color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/read_claim_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/read_claim_title" />
+                android:text="@string/read_claim_title"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -110,14 +126,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/claim_plate_number" />
+                android:text="@string/claim_plate_number"
+                android:textColor="@android:color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/read_claim_plate_number"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/read_claim_plate_number" />
+                android:text="@string/read_claim_plate_number"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -132,7 +152,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:text="@string/claim_description" />
+                android:text="@string/claim_description"
+                android:textColor="@android:color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/read_claim_description"
@@ -140,7 +163,8 @@
                 android:layout_height="96dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
-                android:text="@string/read_claim_description" />
+                android:text="@string/read_claim_description"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -155,25 +179,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/claim_status" />
+                android:text="@string/claim_status"
+                android:textColor="@android:color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/read_claim_status"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/read_claim_status" />
+                android:text="@string/read_claim_status"
+                android:textSize="22sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/read_claim_back_button"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginStart="150dp"
-            android:layout_marginLeft="150dp"
-            android:text="@string/read_claim_back_button"
-            tools:visibility="visible" />
+            android:layout_height="match_parent"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/read_claim_back_button"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorPrimaryDark"
+                android:drawableLeft="@android:drawable/ic_menu_revert"
+                android:drawablePadding="10dp"
+                android:padding="10dp"
+                android:text="@string/my_information_back_button"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
 
     </LinearLayout>
 

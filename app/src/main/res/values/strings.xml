@@ -39,18 +39,18 @@
     <string name="my_claims_list">List of Claims</string>
     <string name="my_claims_list_button">Back</string>
 
-    <string name="read_claim">Claim 07</string>
-    <string name="read_id">Claim ID:</string>
+    <string name="read_details">Details</string>
+    <string name="read_id">Claim ID</string>
     <string name="read_claim_id">(claim id)</string>
-    <string name="read_claim_issuing_date">Issuing date:</string>
+    <string name="read_claim_issuing_date">Issuing date</string>
     <string name="read_claim_date">(issuing date)</string>
-    <string name="claim_title">Title:</string>
+    <string name="claim_title">Title</string>
     <string name="read_claim_title">(title)</string>
-    <string name="claim_plate_number">Plate Number:</string>
+    <string name="claim_plate_number">Plate Number</string>
     <string name="read_claim_plate_number">(plate nr)</string>
-    <string name="claim_description">Description:</string>
-    <string name="read_claim_description">Lorem ipsum dolor...</string>
-    <string name="claim_status">Status:</string>
+    <string name="claim_description">Description</string>
+    <string name="read_claim_description">(description text)</string>
+    <string name="claim_status">Status</string>
     <string name="read_claim_status">(status)</string>
     <string name="read_claim_back_button">Back</string>
 </resources>
