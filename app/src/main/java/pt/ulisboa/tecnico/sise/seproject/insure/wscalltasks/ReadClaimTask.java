@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
@@ -24,11 +23,6 @@ public class ReadClaimTask extends AsyncTask<Void, Void, ClaimRecord> {
     private GlobalState _globalState;
     private int _sessionId;
     private int _claimId;
-    private TextView _claimTitleView;
-    private TextView _claimOccurDateView;
-    private TextView _claimPlateNumberView;
-    private TextView _claimDescriptionView;
-    private TextView _claimStatusView;
     private ClaimRecord _claim;
 
 

@@ -21,8 +21,6 @@ public class LoginTask extends AsyncTask<Void, Void, Integer> {
     private String _password;
     private Context context;
     private int _sessionId = -1;
-    private Customer _customer;
-    private List<ClaimItem> _claimItemList;
 
     public LoginTask(String username, String password, GlobalState globalState, Context context) {
         this._username = username;
@@ -36,8 +34,6 @@ public class LoginTask extends AsyncTask<Void, Void, Integer> {
         try {
             _sessionId = WSHelper.login(_username, _password);
             Log.d(TAG, "Login result => " + _sessionId);
-            //_customer = WSHelper.getCustomerInfo(_sessionId);
-            //_claimItemList = WSHelper.listClaims(_sessionId);
         } catch (Exception e) {
             Log.d(TAG, e.toString());
         }
@@ -51,7 +47,6 @@ public class LoginTask extends AsyncTask<Void, Void, Integer> {
     protected void onPostExecute(Integer result) {
         Log.d(TAG, "result => " + result);
         _globalState.setSessionId(result);
-        //_globalState.set_customer(_customer);
 
         if (result == 0) {
             Toast.makeText(context, "Login failed! Username or password incorrect.", Toast.LENGTH_SHORT).show();
@@ -70,11 +65,6 @@ public class LoginTask extends AsyncTask<Void, Void, Integer> {
             _globalState.set_customer(new Customer(_sessionId, _username));
             _globalState.setPassword(_password);
             String customerFileName = "customer.json";
-
-//                String customerJson = JsonCodec.encodeCustomerInfo(_globalState.getCustomer());
-//                Log.d(TAG, "customerInfo: customerJson - " + customerJson);
-//                JsonFileManager.jsonWriteToFile(context, customerFileName, customerJson);
-//                Log.d(TAG, "customerInfo: written to - " + customerFileName);
 
             Intent intent = new Intent(this.context, MainPageActivity.class);
             intent.putExtra("USERNAME", _globalState.getCustomer().getUsername());

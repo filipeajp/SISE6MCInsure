@@ -31,8 +31,6 @@ public class ReadClaimActivity extends AppCompatActivity {
 
         //obtain a reference to the claim's data structure
         _globalState = (GlobalState) getApplicationContext();
-        //ClaimRecord claim = _globalState.getCustomer().getClaimRecordList().get(index);
-        //int sessionId = _globalState.getCustomer().getSessionId();
 
         // update the UI
         claimIDView = findViewById(R.id.read_claim_id);
@@ -42,7 +40,7 @@ public class ReadClaimActivity extends AppCompatActivity {
         claimDescriptionView = findViewById(R.id.read_claim_description);
         claimStatusView = findViewById(R.id.read_claim_status);
 
-        buttonBack = (Button) findViewById(R.id.read_claim_back_button);
+        buttonBack = findViewById(R.id.read_claim_back_button);
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

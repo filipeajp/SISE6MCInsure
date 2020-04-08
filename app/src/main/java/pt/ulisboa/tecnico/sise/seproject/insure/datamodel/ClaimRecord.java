@@ -25,7 +25,8 @@ public class ClaimRecord extends ClaimItem implements Serializable {
         _plate = plate;
         _description = description;
         _status = status;
-//        _claimMessageList = msgList;
+        //  Message list feature not implemeted but code was maintained as comments
+        //  _claimMessageList = msgList;
     }
 
     public ClaimRecord(int claimId, String claimTitle, String submissionDate, String occurrenceDate, String plate, String description, String status) {
@@ -60,6 +61,7 @@ public class ClaimRecord extends ClaimItem implements Serializable {
         return false;
     }
 
+
 //    public List<ClaimMessage> getClaimMessageList() {
 //        return _claimMessageList;
 //    }
@@ -83,7 +85,7 @@ public class ClaimRecord extends ClaimItem implements Serializable {
                 "Occurrence Date: " + _occurrenceDate + ", " +
                 "Number Plate: " + _plate + ", " +
                 "Description: " + _description + ", " +
-//                "Messages: " + _claimMessageList + ", " +
+//              "Messages: " + _claimMessageList + ", " +
                 "Status: " + _status + ".";
     }
 

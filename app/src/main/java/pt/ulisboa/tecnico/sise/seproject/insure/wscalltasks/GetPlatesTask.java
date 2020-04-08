@@ -48,7 +48,7 @@ public class GetPlatesTask extends AsyncTask<Void, Void, List<String>> {
 
     @Override
     protected void onPostExecute(List<String> plateList) {
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(_context, android.R.layout.simple_spinner_item, plateList);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(_context, android.R.layout.simple_spinner_item, plateList);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         _platesSpinner.setAdapter(dataAdapter);
         try {

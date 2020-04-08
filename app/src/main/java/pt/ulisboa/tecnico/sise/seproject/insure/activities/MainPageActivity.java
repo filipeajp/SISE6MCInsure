@@ -41,6 +41,8 @@ public class MainPageActivity extends AppCompatActivity implements TaskCallBack 
         _globalState = (GlobalState) getApplicationContext();
 
         buttonLogout = findViewById(R.id.main_page_logout_button);
+
+        //Used for checking sessionId
         //Log.d("Insure", "" + globalState.getCustomer().getSessionId());
 
         // Hello Message: maybe create asyncTask?

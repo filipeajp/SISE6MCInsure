@@ -122,22 +122,24 @@ public class Customer extends Person implements Serializable {
     public void addPlate(String plate) {
         _plateList.add(plate);
     }
-//
-//    public boolean removeClaim(ClaimRecord claimRecord) {
-//        boolean res = false;
-//        while(_claimList.contains(claimRecord)) {
-//            res = _claimList.remove(claimRecord);
-//        }
-//        return res;
-//    }
-//
-//    public boolean removePlate(String plate) {
-//        boolean res = false;
-//        while(_plateList.contains(plate)) {
-//            res = _plateList.remove(plate);
-//        }
-//        return res;
-//    }
+
+    // Unused methods:
+    //
+    //    public boolean removeClaim(ClaimRecord claimRecord) {
+    //        boolean res = false;
+    //        while(_claimList.contains(claimRecord)) {
+    //            res = _claimList.remove(claimRecord);
+    //        }
+    //        return res;
+    //    }
+    //
+    //    public boolean removePlate(String plate) {
+    //        boolean res = false;
+    //        while(_plateList.contains(plate)) {
+    //            res = _plateList.remove(plate);
+    //        }
+    //        return res;
+    //    }
 
     @Override
     public boolean equals(Object obj) {
@@ -169,7 +171,7 @@ public class Customer extends Person implements Serializable {
     public String toString() {
         return super.toString() + ", " +
                 "Username:" + _username + ", " +
-//                "Password:" + _password + ", " +
+//              "Password:" + _password + ", " +
                 "Policy Number:" + _policyNumber + ".";
     }
 

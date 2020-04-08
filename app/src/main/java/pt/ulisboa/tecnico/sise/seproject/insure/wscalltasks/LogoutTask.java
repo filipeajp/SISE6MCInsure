@@ -45,15 +45,6 @@ public class LogoutTask extends AsyncTask<Void, Void, Boolean> {
         } catch (Exception e) {
             Log.d(TAG, e.toString());
             _exception_caught = true;
-//            try {
-//                sessionId = WSHelper.login(_globalState.getCustomer().getUsername(), _globalState.getPassword());
-//                Log.d(TAG, "Login result => " + sessionId);
-//                _globalState.setSessionId(sessionId);
-//                _globalState.getCustomer().setSessionId(sessionId);
-//                res = WSHelper.logout(sessionId);
-//            } catch (Exception ex) {
-//                ex.printStackTrace();
-//            }
 
             Log.d(TAG, "result" + res);
             return res;
