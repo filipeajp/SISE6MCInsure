@@ -46,7 +46,7 @@ public class MyClaimsActivity extends AppCompatActivity {
 
                 ClaimItem claim = (ClaimItem) _listView.getItemAtPosition(position);
 
-                new ReadClaimTask(_globalState.getSessionId(), claim.getId(), _context).execute();
+                new ReadClaimTask(_globalState, _globalState.getSessionId(), claim.getId(), _context).execute();
                 // create the read claim activity, passing to it the index position as parameter
                 Log.d("position", position + "");
 
@@ -68,6 +68,6 @@ public class MyClaimsActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        new MyClaimsTask(_globalState.getSessionId(), _listView, _context).execute();
+        new MyClaimsTask(_globalState, _globalState.getSessionId(), _listView, _context).execute();
     }
 }

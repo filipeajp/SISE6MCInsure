@@ -35,9 +35,13 @@ public class LogoutTask extends AsyncTask<Void, Void, Boolean> {
 
     @Override
     protected void onPostExecute(Boolean b) {
-        if (b) {
+        if (b != null && b) {
             //reset session id
             _globalState.getCustomer().setSessionId(-1);
+
+            _context.deleteFile("customer.json");
+            _context.deleteFile("claimList.json");
+            _globalState.clearCustomer();
 
             //open login activity
             Intent intent = new Intent(this._context, LoginActivity.class);

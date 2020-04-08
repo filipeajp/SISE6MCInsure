@@ -1,5 +1,6 @@
 package pt.ulisboa.tecnico.sise.seproject.insure.activities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +17,7 @@ public class MyInformationActivity extends AppCompatActivity {
     private static final String LOG_TAG = "SISE - MyInformation";
 
     private GlobalState _globalState;
+    private Context _context = this;
     private TextView textViewName;
     private TextView textViewDateOfBirth;
     private TextView textViewAddress;
@@ -55,7 +57,7 @@ public class MyInformationActivity extends AppCompatActivity {
         _globalState = (GlobalState) getApplicationContext();
         Log.d("My", "Myinfo activity - calling global state session id: " + _globalState.getSessionId());
         int sessionId = _globalState.getSessionId();
-        new MyInformationTask(sessionId, textViewName, textViewDateOfBirth, textViewAddress, textViewNif, textViewPolicyNr).execute();
+        new MyInformationTask(_globalState, _context, sessionId, textViewName, textViewDateOfBirth, textViewAddress, textViewNif, textViewPolicyNr).execute();
     }
 
 }

@@ -7,10 +7,10 @@ import java.util.List;
 public class Customer extends Person implements Serializable {
 
     private static final long serialVersionUID = 4895739450784438738L;
-    private final List<ClaimRecord> _claimList;
     private final List<String> _plateList;
+    private List<ClaimRecord> _claimList;
     private String _username;
-    //    private String _password;
+    private String _password;
     private int _policyNumber;
     private int _sessionId = -1;
 
@@ -18,7 +18,7 @@ public class Customer extends Person implements Serializable {
                     Person person, List<ClaimRecord> claimList, List<String> plateList) {
         super(person);
         _username = username;
-//        _password = password;
+        _password = password;
         _sessionId = sessionId;
         _policyNumber = policyNumber;
         _claimList = claimList;
@@ -66,13 +66,13 @@ public class Customer extends Person implements Serializable {
         this._username = username;
     }
 
-//    public String getPassword() {
-//        return _password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this._password = password;
-//    }
+    public String getPassword() {
+        return _password;
+    }
+
+    public void setPassword(String password) {
+        this._password = password;
+    }
 
     public int getPolicyNumber() {
         return _policyNumber;
@@ -96,6 +96,19 @@ public class Customer extends Person implements Serializable {
 
     public List<ClaimRecord> getClaimRecordList() {
         return _claimList;
+    }
+
+    public void setClaimRecordList(List<ClaimRecord> claimList) {
+        this._claimList = claimList;
+    }
+
+    public ClaimRecord getClaimRecord(int claim_id) {
+        for (ClaimRecord claimRecord : _claimList) {
+            if (claimRecord.getId() == claim_id) {
+                return claimRecord;
+            }
+        }
+        return null;
     }
 
     public List<String> getPlateList() {

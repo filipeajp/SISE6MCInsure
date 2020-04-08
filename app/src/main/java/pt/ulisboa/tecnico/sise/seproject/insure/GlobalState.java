@@ -29,6 +29,15 @@ public class GlobalState extends Application {
 //        _claimList = claimList;
 //    }
 //
+    public ClaimRecord getCustomerClaimRecord(int claim_id) {
+        for (ClaimRecord claimRecord : _customer.getClaimRecordList()) {
+            if (claimRecord.getId() == claim_id) {
+                return claimRecord;
+            }
+        }
+        return null;
+    }
+
     public int getSessionId() {
         Log.d("My", "getSessionID" + _sessionId);
         return _sessionId;
@@ -38,5 +47,18 @@ public class GlobalState extends Application {
         Log.d("My", "setSessionID-before" + _sessionId);
         _sessionId = sessionId;
         Log.d("My", "setSessionID-after" + _sessionId);
+    }
+
+    public void clearCustomer() {
+        _customer.setSessionId(-1);
+        _customer.setName("");
+        _customer.setPolicyNumber(-1);
+        _customer.setAddress("");
+        _customer.setDateOfBirth("");
+        _customer.setUsername("");
+        _customer.setPassword("");
+        _customer.getClaimRecordList().clear();
+        _customer.getPlateList().clear();
+        _customer = null;
     }
 }

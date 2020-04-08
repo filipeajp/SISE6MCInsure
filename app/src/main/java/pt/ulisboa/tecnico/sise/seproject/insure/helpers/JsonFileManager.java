@@ -57,6 +57,7 @@ public class JsonFileManager {
                 scanner.close();
             }
         }
+        Log.d("readFileinput", sb.toString());
         return sb.toString();
     }
 }
