@@ -61,11 +61,16 @@
             android:layout_marginBottom="5dp" />
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/new_claim_select_date" />
+
+        <TextView
             android:id="@+id/new_claim_occurrence_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
             android:text="@string/new_claim_occurrence_date"
             android:textColor="@android:color/black"
