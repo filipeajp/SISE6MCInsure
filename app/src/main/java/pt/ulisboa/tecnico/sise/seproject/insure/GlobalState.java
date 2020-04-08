@@ -3,15 +3,13 @@ package pt.ulisboa.tecnico.sise.seproject.insure;
 import android.app.Application;
 import android.util.Log;
 
-import java.util.ArrayList;
-
-import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimRecord;
 import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.Customer;
 
 public class GlobalState extends Application {
     private static int _sessionId = -1;
     private static String _password;
     private Customer _customer;
+
 
     public Customer getCustomer() {
         return this._customer;

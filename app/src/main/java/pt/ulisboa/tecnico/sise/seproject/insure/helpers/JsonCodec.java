@@ -57,40 +57,6 @@ public class JsonCodec {
         return jsonCustomerInfo.toString();
     }
 
-    public static ClaimRecord decodeClaimRecord(String jsonResult) {
-        ClaimRecord claimRecord = null;
-        Log.i(TAG, "decodeClaimRecord:" + jsonResult);
-        try {
-            JSONObject jsonRootObject = new JSONObject(jsonResult);
-            int claimIdResp = Integer.parseInt(jsonRootObject.getString("claimId"));
-            String claimTitle = jsonRootObject.getString("claimTitle");
-            String plate = jsonRootObject.optString("plate");
-            String submissionDate = jsonRootObject.optString("submissionDate");
-            String occurrenceDate = jsonRootObject.optString("occurrenceDate");
-            String description = jsonRootObject.optString("description");
-            String status = jsonRootObject.optString("status");
-            claimRecord = new ClaimRecord(claimIdResp, claimTitle, submissionDate, occurrenceDate,
-                    plate, description, status);
-        } catch (JSONException e) {
-            Log.d(TAG, "decodeClaimRecord:" + jsonResult);
-        }
-        return claimRecord;
-    }
-
-    public static String encodeClaimRecord(ClaimRecord claimRecord) throws Exception {
-        if (claimRecord == null) return "";
-        JSONObject jsonClaim = new JSONObject();
-        jsonClaim.put("claimId", claimRecord.getId());
-        jsonClaim.put("claimTitle", claimRecord.getTitle());
-        jsonClaim.put("plate", claimRecord.getPlate());
-        jsonClaim.put("submissionDate", claimRecord.getSubmissionDate());
-        jsonClaim.put("occurrenceDate", claimRecord.getOccurrenceDate());
-        jsonClaim.put("description", claimRecord.getDescription());
-        jsonClaim.put("status", claimRecord.getStatus());
-        Log.i(TAG, "encodeClaimRecord:" + jsonClaim.toString());
-        return jsonClaim.toString();
-    }
-
     public static List<String> decodePlateList(String jsonResult) {
         ArrayList<String> plateList = null;
         Log.i(TAG, "decodePlateList:" + jsonResult);
@@ -150,6 +116,7 @@ public class JsonCodec {
         return jsonClaimList.toString();
     }
 
+
     public static List<ClaimRecord> decodeClaimRecordList(String jsonResult) {
         ArrayList<ClaimRecord> claimList = null;
         Log.i(TAG, "decodeClaimList:" + jsonResult);
@@ -160,12 +127,12 @@ public class JsonCodec {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 int claimId = Integer.parseInt(jsonObject.optString("claimId"));
                 String claimTitle = jsonObject.optString("claimTitle");
-                String claimOccurrenceDate = jsonObject.optString("claimOccurrenceDate");
+                String claimOccurDate = jsonObject.optString("claimOccurrenceDate");
                 String claimPlate = jsonObject.optString("claimPlate");
-                String claimDescription = jsonObject.optString("claimDescriptio");
+                String claimDescription = jsonObject.optString("claimDescription");
                 String claimStatus = jsonObject.optString("claimStatus");
                 DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-                claimList.add(new ClaimRecord(claimId, claimTitle, dateFormat.format(new Date()), claimOccurrenceDate, claimPlate, claimDescription, claimStatus));
+                claimList.add(new ClaimRecord(claimId, claimTitle, dateFormat.format(new Date()), claimOccurDate, claimPlate, claimDescription, claimStatus));
             }
         } catch (JSONException e) {
             Log.d(TAG, "decodeClaimList:" + jsonResult);
@@ -185,10 +152,10 @@ public class JsonCodec {
             jsonClaim.put("claimPlate", c.getPlate());
             jsonClaim.put("claimDescription", c.getDescription());
             jsonClaim.put("claimStatus", c.getStatus());
-
             jsonClaimList.put(jsonClaim);
         }
         Log.i(TAG, "encodeClaimList:" + jsonClaimList.toString());
         return jsonClaimList.toString();
     }
+
 }

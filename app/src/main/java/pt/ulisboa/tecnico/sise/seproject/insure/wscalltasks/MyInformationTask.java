@@ -16,6 +16,7 @@ public class MyInformationTask extends AsyncTask<Void, Void, Customer> {
 
     private static final String TAG = "MyInformationCallTask";
     private static final String CUSTOMER_FILE_NAME = "customer.json";
+
     private int _sessionId;
     private Context _context;
     private GlobalState _globalState;

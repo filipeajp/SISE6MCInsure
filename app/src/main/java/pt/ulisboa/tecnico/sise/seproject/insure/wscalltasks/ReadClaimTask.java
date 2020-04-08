@@ -7,6 +7,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.List;
+
 import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
 import pt.ulisboa.tecnico.sise.seproject.insure.InternalProtocol;
 import pt.ulisboa.tecnico.sise.seproject.insure.activities.ReadClaimActivity;
@@ -24,6 +26,7 @@ public class ReadClaimTask extends AsyncTask<Void, Void, ClaimRecord> {
     private int _sessionId;
     private int _claimId;
     private ClaimRecord _claim;
+    private boolean _exception_caught = false;
 
 
     public ReadClaimTask(GlobalState globalState, int sessionId, int claimId, Context context) {
@@ -37,29 +40,28 @@ public class ReadClaimTask extends AsyncTask<Void, Void, ClaimRecord> {
     protected ClaimRecord doInBackground(Void... voids) {
         Log.d(TAG, "log -------------------");
         try {
-            //Log.d(TAG, "Get Claim Info result claimId " + _claimId + " => " + _globalState.getCustomer().getClaimRecord(_claimId).toString());
-            if (_globalState.getCustomer().getClaimRecord(_claimId) == null) {
+            _claim = WSHelper.getClaimInfo(_sessionId, _claimId);
+            if (_claim == null) {
+                _sessionId = WSHelper.login(_globalState.getCustomer().getUsername(), _globalState.getPassword());
+                Log.d(TAG, "Login result => " + _sessionId);
+                _globalState.setSessionId(_sessionId);
+                _globalState.getCustomer().setSessionId(_sessionId);
                 _claim = WSHelper.getClaimInfo(_sessionId, _claimId);
-                if (_claim == null) {
-                    try {
-                        _sessionId = WSHelper.login(_globalState.getCustomer().getUsername(), _globalState.getPassword());
-                        Log.d(TAG, "Login result => " + _sessionId);
-                        _globalState.setSessionId(_sessionId);
-                        _globalState.getCustomer().setSessionId(_sessionId);
-                        _claim = WSHelper.getClaimInfo(_sessionId, _claimId);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                }
-            } else {
-                _claim = _globalState.getCustomer().getClaimRecord(_claimId);
-                Log.d(TAG, "claim read from memory: " + _claim.toString());
             }
+
 
         } catch (Exception e) {
             Log.d(TAG, e.toString());
+            String claimListJson = JsonFileManager.jsonReadFromFile(_context, CLAIM_LIST_FILE_NAME);
+            Log.d(TAG, "claimlist: read from - " + CLAIM_LIST_FILE_NAME);
 
-
+            List<ClaimRecord> claimList = JsonCodec.decodeClaimRecordList(claimListJson);
+            for (ClaimRecord cr : claimList) {
+                if (cr.getId() == _claimId) {
+                    return cr;
+                }
+            }
+            _exception_caught = true;
         }
         if (_claim != null) {
             Log.d(TAG, "Get Claim Info result claimId " + _claimId + " => " + _claim.toString());
@@ -77,13 +79,26 @@ public class ReadClaimTask extends AsyncTask<Void, Void, ClaimRecord> {
     protected void onPostExecute(ClaimRecord claim) {
         if (claim == null) {
             Toast.makeText(_context, "Server Error and Claim Record not stored in cache.\nNot able to advance.\nPlease try again later.", Toast.LENGTH_LONG).show();
+        } else if (_exception_caught) {
+
+            Intent intent = new Intent(_context, ReadClaimActivity.class);
+            intent.putExtra(InternalProtocol.READ_CLAIM_TITLE, claim.getTitle());
+            intent.putExtra(InternalProtocol.READ_CLAIM_ID, "" + claim.getId());
+            intent.putExtra(InternalProtocol.READ_CLAIM_OCCUR_DATE, claim.getOccurrenceDate());
+            intent.putExtra(InternalProtocol.READ_CLAIM_PLATE_NUMBER, claim.getPlate());
+            intent.putExtra(InternalProtocol.READ_CLAIM_STATUS, claim.getStatus());
+            intent.putExtra(InternalProtocol.READ_CLAIM_DESCRIPTION, claim.getDescription());
+            _context.startActivity(intent);
+
         } else {
             try {
-                _globalState.getCustomer().addClaim(claim);
-                String claimListJson = JsonCodec.encodeClaimRecordList(_globalState.getCustomer().getClaimRecordList());
-                Log.d(TAG, "claimList: customerJson - " + claimListJson);
+                String claimListJson = JsonFileManager.jsonReadFromFile(_context, CLAIM_LIST_FILE_NAME);
+
+                List<ClaimRecord> claimList = JsonCodec.decodeClaimRecordList(claimListJson);
+                claimList.add(claim);
+                claimListJson = JsonCodec.encodeClaimRecordList(claimList);
+
                 JsonFileManager.jsonWriteToFile(_context, CLAIM_LIST_FILE_NAME, claimListJson);
-                Log.d(TAG, "claimList: written to - " + CLAIM_LIST_FILE_NAME);
 
                 Intent intent = new Intent(_context, ReadClaimActivity.class);
                 intent.putExtra(InternalProtocol.READ_CLAIM_TITLE, claim.getTitle());
@@ -94,13 +109,10 @@ public class ReadClaimTask extends AsyncTask<Void, Void, ClaimRecord> {
                 intent.putExtra(InternalProtocol.READ_CLAIM_DESCRIPTION, claim.getDescription());
                 _context.startActivity(intent);
             } catch (Exception e) {
-                e.printStackTrace();
+                Log.d(TAG, "Error");
             }
 
-
         }
-
-
     }
 }
 

@@ -34,24 +34,14 @@ public class MyClaimsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_claims);
 
         _globalState = (GlobalState) getApplicationContext();
-
-        //assign adapter to list view
         _listView = (ListView) findViewById(R.id.my_claims_list);
 
-
-        // attach click listener to list view items
         _listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 ClaimItem claim = (ClaimItem) _listView.getItemAtPosition(position);
-
                 new ReadClaimTask(_globalState, _globalState.getSessionId(), claim.getId(), _context).execute();
-                // create the read claim activity, passing to it the index position as parameter
                 Log.d("position", position + "");
-
-                // if instead of string, we pass a list with notes, we can retrieve the original Claim object this way
-                //Note note = (Note)parent.getItemAtPosition(position);
             }
         });
 

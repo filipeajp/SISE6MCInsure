@@ -31,15 +31,11 @@ public class LogoutTask extends AsyncTask<Void, Void, Boolean> {
             res = WSHelper.logout(sessionId);
             Log.d(TAG, "result" + res);
             if (!res) {
-                try {
-                    sessionId = WSHelper.login(_globalState.getCustomer().getUsername(), _globalState.getPassword());
-                    Log.d(TAG, "Login result => " + sessionId);
-                    _globalState.setSessionId(sessionId);
-                    _globalState.getCustomer().setSessionId(sessionId);
-                    res = WSHelper.logout(sessionId);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
+                sessionId = WSHelper.login(_globalState.getCustomer().getUsername(), _globalState.getPassword());
+                Log.d(TAG, "Login result => " + sessionId);
+                _globalState.setSessionId(sessionId);
+                _globalState.getCustomer().setSessionId(sessionId);
+                res = WSHelper.logout(sessionId);
             }
             return res;
         } catch (Exception e) {
@@ -54,9 +50,10 @@ public class LogoutTask extends AsyncTask<Void, Void, Boolean> {
     @Override
     protected void onPostExecute(Boolean b) {
         if (b) {
-            //reset session id
+            //reset session id, memory and cache
             _context.deleteFile("customer.json");
             _context.deleteFile("claimList.json");
+            _context.deleteFile("plateList.json");
             _globalState.clearCustomer();
             _globalState.setSessionId(-1);
             _globalState.setPassword("");

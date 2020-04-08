@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -19,7 +20,8 @@ public class GetPlatesTask extends AsyncTask<Void, Void, List<String>> {
     private int _sessionId;
     private Spinner _platesSpinner;
     private Context _context;
-    private List<String> _plateList;
+    private List<String> _plateList = null;
+    private boolean _exception_caught = false;
 
     public GetPlatesTask(int _sessionId, Spinner _platesSpinner, Context _context) {
         this._sessionId = _sessionId;
@@ -40,6 +42,7 @@ public class GetPlatesTask extends AsyncTask<Void, Void, List<String>> {
             }
 
         } catch (Exception e) {
+            _exception_caught = true;
             Log.d(TAG, e.toString());
 
         }
@@ -48,16 +51,22 @@ public class GetPlatesTask extends AsyncTask<Void, Void, List<String>> {
 
     @Override
     protected void onPostExecute(List<String> plateList) {
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(_context, android.R.layout.simple_spinner_item, plateList);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        _platesSpinner.setAdapter(dataAdapter);
-        try {
-            String plateListJson = JsonCodec.encodePlateList(_plateList);
-            Log.d(TAG, "claimList: customerJson - " + plateListJson);
-            JsonFileManager.jsonWriteToFile(_context, PLATE_LIST_FILE_NAME, plateListJson);
-            Log.d(TAG, "claimList: written to - " + PLATE_LIST_FILE_NAME);
-        } catch (Exception e) {
-            e.printStackTrace();
+
+        if (plateList != null) {
+            ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(_context, android.R.layout.simple_spinner_item, plateList);
+            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            _platesSpinner.setAdapter(dataAdapter);
+            try {
+                String plateListJson = JsonCodec.encodePlateList(_plateList);
+                Log.d(TAG, "claimList: customerJson - " + plateListJson);
+                JsonFileManager.jsonWriteToFile(_context, PLATE_LIST_FILE_NAME, plateListJson);
+                Log.d(TAG, "claimList: written to - " + PLATE_LIST_FILE_NAME);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (_exception_caught) {
+            Toast.makeText(_context, "Server Error. There is no plates in cache.\nPlease try again later.", Toast.LENGTH_LONG).show();
         }
+
     }
 }

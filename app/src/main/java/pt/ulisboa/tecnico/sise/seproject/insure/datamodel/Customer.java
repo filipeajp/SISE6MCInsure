@@ -98,19 +98,6 @@ public class Customer extends Person implements Serializable {
         return _claimList;
     }
 
-    public void setClaimRecordList(List<ClaimRecord> claimList) {
-        this._claimList = claimList;
-    }
-
-    public ClaimRecord getClaimRecord(int claim_id) {
-        for (ClaimRecord claimRecord : _claimList) {
-            if (claimRecord.getId() == claim_id) {
-                return claimRecord;
-            }
-        }
-        return null;
-    }
-
     public List<String> getPlateList() {
         return _plateList;
     }

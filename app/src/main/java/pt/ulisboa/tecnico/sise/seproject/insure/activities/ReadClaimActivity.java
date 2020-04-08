@@ -29,7 +29,6 @@ public class ReadClaimActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_read_claim);
 
-        //obtain a reference to the claim's data structure
         _globalState = (GlobalState) getApplicationContext();
 
         // update the UI
@@ -75,11 +74,11 @@ public class ReadClaimActivity extends AppCompatActivity {
         claimPlateNumberView.setText(plateNumber);
         claimOccurDateView.setText(occurrenceDate);
         claimDescriptionView.setText(description);
-        
+
         claimStatusView.setText(status);
-        if(status.equals("denied")) {
+        if (status.equals("denied")) {
             claimStatusView.setTextColor(Color.RED);
-        } else if(status.equals("accepted")) {
+        } else if (status.equals("accepted")) {
             claimStatusView.setTextColor(Color.GREEN);
         } else {
             claimStatusView.setTextColor(getResources().getColor(R.color.colorPrimary));
