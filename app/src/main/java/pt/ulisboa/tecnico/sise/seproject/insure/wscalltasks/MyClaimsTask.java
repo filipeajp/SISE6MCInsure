@@ -11,6 +11,7 @@ import java.util.List;
 
 import pt.ulisboa.tecnico.sise.seproject.insure.GlobalState;
 import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimItem;
+import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.ClaimRecord;
 import pt.ulisboa.tecnico.sise.seproject.insure.helpers.JsonCodec;
 import pt.ulisboa.tecnico.sise.seproject.insure.helpers.JsonFileManager;
 import pt.ulisboa.tecnico.sise.seproject.insure.helpers.WSHelper;
@@ -35,16 +36,48 @@ public class MyClaimsTask extends AsyncTask<Void, Void, List<ClaimItem>> {
     @Override
     protected List<ClaimItem> doInBackground(Void... params) {
         try {
+            //_claimItemList = WSHelper.listClaims(_sessionId);
             String claimListJson = JsonFileManager.jsonReadFromFile(_context, CLAIM_LIST_FILE_NAME);
             Log.d(TAG, "claimList: read from - " + CLAIM_LIST_FILE_NAME);
-            if (JsonCodec.decodeClaimList(claimListJson) == null) {
+            if (JsonCodec.decodeClaimList(claimListJson) == null || JsonCodec.decodeClaimList(claimListJson).isEmpty()) {
                 _claimItemList = WSHelper.listClaims(_sessionId);
+                if (_claimItemList == null) {
+                    try {
+                        _sessionId = WSHelper.login(_globalState.getCustomer().getUsername(), _globalState.getPassword());
+                        Log.d(TAG, "Login result => " + _sessionId);
+                        _globalState.setSessionId(_sessionId);
+                        _globalState.getCustomer().setSessionId(_sessionId);
+
+                        _claimItemList = WSHelper.listClaims(_sessionId);
+
+                        claimListJson = JsonFileManager.jsonReadFromFile(_context, CLAIM_LIST_FILE_NAME);
+                        Log.d(TAG, "claimList: read from - " + CLAIM_LIST_FILE_NAME);
+                        List<ClaimItem> claimItemList = JsonCodec.decodeClaimList(claimListJson);
+                        Log.d(TAG, "ClaimList: - " + JsonCodec.decodeClaimList(claimListJson));
+
+                        if (_claimItemList != null && (_claimItemList.size() > claimItemList.size())) {
+                            int dif = _globalState.getCustomer().getClaimRecordList().size() - claimItemList.size();
+                            for (int i = 0; i < dif; i++) {
+                                int index = _globalState.getCustomer().getClaimRecordList().size() - dif;
+                                ClaimRecord claim = _globalState.getCustomer().getClaimRecord(index);
+                                WSHelper.submitNewClaim(_sessionId, claim.getTitle(), claim.getOccurrenceDate(), claim.getPlate(), claim.getDescription());
+                            }
+                        }
+                    } catch (Exception ex) {
+                        Log.d(TAG, "claimList failed!");
+                    }
+                }
+
             } else {
                 Log.d(TAG, "ClaimList: - " + JsonCodec.decodeClaimList(claimListJson));
                 _claimItemList = JsonCodec.decodeClaimList(claimListJson);
             }
         } catch (Exception e) {
             Log.d(TAG, e.toString());
+//            String claimListJson = JsonFileManager.jsonReadFromFile(_context, CLAIM_LIST_FILE_NAME);
+//            Log.d(TAG, "claimList: read from - " + CLAIM_LIST_FILE_NAME);
+//            Log.d(TAG, "ClaimList: - " + JsonCodec.decodeClaimList(claimListJson));
+//            _claimItemList = JsonCodec.decodeClaimList(claimListJson);
         }
 
         if (_claimItemList != null) {

@@ -41,14 +41,24 @@ public class MyInformationTask extends AsyncTask<Void, Void, Customer> {
     protected Customer doInBackground(Void... voids) {
         Log.d(TAG, "SessionID:" + _sessionId);
         Log.d(TAG, "read file: customer info " + JsonFileManager.jsonReadFromFile(_context, CUSTOMER_FILE_NAME));
-        String customerFileName = "customer.json";
         try {
             String customerJson = JsonFileManager.jsonReadFromFile(_context, CUSTOMER_FILE_NAME);
             Log.d(TAG, "customerInfo: read from - " + CUSTOMER_FILE_NAME);
 
             if (JsonCodec.decodeCustomerInfo(customerJson) == null) {
                 Log.d(TAG, "online");
-                return WSHelper.getCustomerInfo(_sessionId);
+                Customer c = WSHelper.getCustomerInfo(_sessionId);
+                if (c == null) {
+                    _sessionId = WSHelper.login(_globalState.getCustomer().getUsername(), _globalState.getPassword());
+                    Log.d(TAG, "Login result => " + _sessionId);
+                    _globalState.setSessionId(_sessionId);
+                    _globalState.getCustomer().setSessionId(_sessionId);
+
+                    return WSHelper.getCustomerInfo(_sessionId);
+                }
+
+                return c;
+
             } else {
                 Log.d(TAG, "customerInfo: jsonCustomer - " + JsonCodec.decodeCustomerInfo(customerJson));
                 return JsonCodec.decodeCustomerInfo(customerJson);

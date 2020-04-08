@@ -72,7 +72,15 @@ public class NewClaimActivity extends AppCompatActivity implements TaskCallBack,
                 String claimOccurDate = viewOccurrenceDate.getText().toString();
                 String claimDesc = editTextDesc.getText().toString();
 
-                new NewClaimTask(_globalState, view.getContext(), _globalState.getSessionId(), claimTitle, claimOccurDate, claimPlateNumber, claimDesc).execute();
+                if (claimTitle.isEmpty()) {
+                    Toast.makeText(view.getContext(), "Write a claim title.", Toast.LENGTH_LONG).show();
+                    return;
+                } else if (claimOccurDate.equals("Click here")) {
+                    Toast.makeText(view.getContext(), "Select an occurrence date.", Toast.LENGTH_LONG).show();
+                } else {
+                    new NewClaimTask(_globalState, view.getContext(), _globalState.getSessionId(), claimTitle, claimOccurDate, claimPlateNumber, claimDesc).execute();
+                }
+
             }
         });
 

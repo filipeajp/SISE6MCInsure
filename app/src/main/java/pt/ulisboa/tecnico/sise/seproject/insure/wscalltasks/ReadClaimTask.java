@@ -43,13 +43,29 @@ public class ReadClaimTask extends AsyncTask<Void, Void, ClaimRecord> {
     protected ClaimRecord doInBackground(Void... voids) {
         Log.d(TAG, "log -------------------");
         try {
+            //Log.d(TAG, "Get Claim Info result claimId " + _claimId + " => " + _globalState.getCustomer().getClaimRecord(_claimId).toString());
             if (_globalState.getCustomer().getClaimRecord(_claimId) == null) {
                 _claim = WSHelper.getClaimInfo(_sessionId, _claimId);
+                if (_claim == null) {
+                    try {
+                        _sessionId = WSHelper.login(_globalState.getCustomer().getUsername(), _globalState.getPassword());
+                        Log.d(TAG, "Login result => " + _sessionId);
+                        _globalState.setSessionId(_sessionId);
+                        _globalState.getCustomer().setSessionId(_sessionId);
+                        _claim = WSHelper.getClaimInfo(_sessionId, _claimId);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
             } else {
                 _claim = _globalState.getCustomer().getClaimRecord(_claimId);
+                Log.d(TAG, "claim read from memory: " + _claim.toString());
             }
+
         } catch (Exception e) {
             Log.d(TAG, e.toString());
+
+
         }
         if (_claim != null) {
             Log.d(TAG, "Get Claim Info result claimId " + _claimId + " => " + _claim.toString());
@@ -68,14 +84,14 @@ public class ReadClaimTask extends AsyncTask<Void, Void, ClaimRecord> {
         if (claim == null) {
             Toast.makeText(_context, "Server Error and Claim Record not stored in cache.\nNot able to advance.\nPlease try again later.", Toast.LENGTH_LONG).show();
         } else {
-            _globalState.getCustomer().addClaim(claim);
             try {
+                _globalState.getCustomer().addClaim(claim);
                 String claimListJson = JsonCodec.encodeClaimRecordList(_globalState.getCustomer().getClaimRecordList());
                 Log.d(TAG, "claimList: customerJson - " + claimListJson);
                 JsonFileManager.jsonWriteToFile(_context, CLAIM_LIST_FILE_NAME, claimListJson);
                 Log.d(TAG, "claimList: written to - " + CLAIM_LIST_FILE_NAME);
-                Intent intent = new Intent(_context, ReadClaimActivity.class);
 
+                Intent intent = new Intent(_context, ReadClaimActivity.class);
                 intent.putExtra(InternalProtocol.READ_CLAIM_TITLE, claim.getTitle());
                 intent.putExtra(InternalProtocol.READ_CLAIM_ID, "" + claim.getId());
                 intent.putExtra(InternalProtocol.READ_CLAIM_OCCUR_DATE, claim.getOccurrenceDate());

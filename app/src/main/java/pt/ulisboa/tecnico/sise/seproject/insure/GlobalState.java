@@ -10,6 +10,7 @@ import pt.ulisboa.tecnico.sise.seproject.insure.datamodel.Customer;
 
 public class GlobalState extends Application {
     private static int _sessionId = -1;
+    private static String _password;
     private ArrayList<ClaimRecord> _claimList;
     private Customer _customer;
 
@@ -47,6 +48,14 @@ public class GlobalState extends Application {
         Log.d("My", "setSessionID-before" + _sessionId);
         _sessionId = sessionId;
         Log.d("My", "setSessionID-after" + _sessionId);
+    }
+
+    public String getPassword() {
+        return _password;
+    }
+
+    public void setPassword(String password) {
+        _password = password;
     }
 
     public void clearCustomer() {
